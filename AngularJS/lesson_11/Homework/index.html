@@ -8,11 +8,28 @@
     <script>
 
         // Добавьте AngularJS контроллер
+        var model = {
+            task: [{name: "Купить молко", description: "Сходить на рынок и купить молоко", date: "2/18/2015", completed: ""}]
+        };
 
         var myApp = angular.module("myApp", []);
 
         myApp.controller("myAppCtrl", function($scope){
-            $scope.hello = "ПРИВЕТ";
+
+              $scope.data = model;
+
+            $scope.clickAdd = function(){
+
+                $scope.data.task.push({
+                    name: $scope.inputName,
+                    description: $scope.inputDesctiption,
+                    date: $scope.inputDate,
+                });
+
+                $scope.inputName = "";
+                $scope.inputDesctiption = "";
+                $scope.inputDate = "";
+            }
         });
 
     </script>
@@ -33,10 +50,10 @@
                     <th>Completed</th>
                 </tr>
             </thead>
-            <tr>
-                <td>{{hello}}</td>
-                <td></td>
-                <td></td>
+            <tr ng-repeat="task in data.task">
+                <td>{{task.name}}</td>
+                <td>{{task.description}}</td>
+                <td>{{task.date}}</td>
                 <td></td>
             </tr>
         </table>
@@ -44,14 +61,14 @@
         <div>
             <!-- Форма для добавления новых задач -->
             <label>Name</label>
-            <input class="form-control" type="text">
+            <input class="form-control" type="text" ng-model="inputName">
             <label>Due Date</label>
-            <input class="form-control" type="text">
+            <input class="form-control" type="text" ng-model="inputDate">
             <label>Desctiption</label>
-            <input class="form-control" type="text"><br>
+            <input class="form-control" type="text" ng-model="inputDesctiption"><br>
             <label>Completed</label><br>
             <checkbox></checkbox><br>
-            <button class="btn" ng-click="clickAdd">Add</button>
+            <button class="btn" ng-click="clickAdd()">Add</button>
         </div>
     </div>
 </body>
