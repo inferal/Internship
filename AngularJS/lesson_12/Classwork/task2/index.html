@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-     <link rel="stylesheet" href="style.css">
      <script src="../../../Libraries/angular.js"></script>
      <link rel="stylesheet" href="../../../Libraries/bootstrap.css">
      <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css">
@@ -12,6 +11,18 @@
     <script>
         angular.module("myApp",[])
         .controller("mainCtrl", function($scope){
+
+            $scope.mode = {
+                ch1: true,
+                ch2: false,
+                ch3: false,
+                ch4: false,
+                ch5: false,
+                ch6: false
+            };
+
+            $scope.checkResult = "";
+
             $scope.items = [
              { name: "B Item", price: 10.9, category: "Category 1", count: 10, tax: 1.12, expiration: 10 },
              { name: "A Item", price: 1.1, category: "Category 1", count: 8, tax: 0.55, expiration: 12 },
@@ -26,8 +37,8 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Price</th>
+                    <th><label for="cnm">Name</label><input id="cnm" type="checkbox" class="checkbox" ng-model="mode.name"              ng-false-value="name" /></th>
+                    <th><label for="cprc">Price</label><input id="cprc" type="checkbox" class="checkbox" ng-model="mode.price"          ng-true-value="'price'" /></th>
                     <th>Category</th>
                     <th>Count</th>
                     <th>Tax</th>
@@ -35,9 +46,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="item in items">
-                    <td>{{item.name}}</td>
-                    <td>{{item.price}}</td>
+                <tr ng-repeat="item in items" ng-switch on="mode">
+                    <td ng-switch-when="mode.name">{{item.name}}</td>
+                     <td ng-switch-when="mode.price">{{item.price}}</td>
                     <td>{{item.category}}</td>
                     <td>{{item.count}}</td>
                     <td>{{item.tax}}</td>
