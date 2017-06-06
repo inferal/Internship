@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="helloWorldApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../Libraries/bootstrap.css">
+    <link rel="stylesheet" href="../../Libraries/bootstrap-theme.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="../../Libraries/angular.js"></script>
+    <title>Hello World-2</title>
+
+    <script>
+        var helloWorldApp = angular.module("helloWorldApp",[]);
+
+        helloWorldApp.controller("firstCtrl", function($scope){
+            
+            $scope.clickHandler = function(){
+                $scope.message = $scope.yourText;
+            }            
+        });
+    </script>
+
+</head>
+<body ng-controller="firstCtrl">    
+    <div>
+        <input type="text" ng-model="yourText" placeholder="Введите слово:" >
+        <button class="btn" ng-click="clickHandler()">Обновить</button>
+        <hr>
+        <h1>{{message}}</h1>
+    </div>
+</body>
+</html>
