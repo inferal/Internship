@@ -9,7 +9,8 @@
 
         // Добавьте AngularJS контроллер
         var model = {
-            task: [{name: "Купить молко", description: "Сходить на рынок и купить молоко", date: "2/18/2015", completed: ""}]
+            task: [{name: "Купить молко", description: "Сходить на рынок и купить молоко", date: "2/18/2015", completed: true},
+                    {name: "Посмотреть видео урок по AngularJS", description: "Доcмотреть до конца урок на itvdn.com", date: "2/18/2015", completed: true}]
         };
 
         var myApp = angular.module("myApp", []);
@@ -24,11 +25,20 @@
                     name: $scope.inputName,
                     description: $scope.inputDesctiption,
                     date: $scope.inputDate,
+                    completed: false
                 });
 
                 $scope.inputName = "";
                 $scope.inputDesctiption = "";
                 $scope.inputDate = "";
+            }
+
+            $scope.showText = function(completed){
+                return completed ? "Да" : "Нет";
+            }
+
+              $scope.setStyle = function (completed) {
+                return completed ? "color:green" : "color:red; font-weight: bold";
             }
         });
 
@@ -54,7 +64,12 @@
                 <td>{{task.name}}</td>
                 <td>{{task.description}}</td>
                 <td>{{task.date}}</td>
-                <td></td>
+                <td><input type="checkbox" ng-model="task.completed"/></td>
+                <td>
+                    <span style="{{setStyle(task.completed)}}">
+                        {{showText(task.completed)}}
+                    </span>
+                </td>
             </tr>
         </table>
 
@@ -67,7 +82,7 @@
             <label>Desctiption</label>
             <input class="form-control" type="text" ng-model="inputDesctiption"><br>
             <label>Completed</label><br>
-            <checkbox></checkbox><br>
+            <input type="checkbox"/><br>
             <button class="btn" ng-click="clickAdd()">Add</button>
         </div>
     </div>
