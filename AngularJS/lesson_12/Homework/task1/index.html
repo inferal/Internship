@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Калькулятор</title>
+    <script src="../../../Libraries/angular.js"></script>
+     <link rel="stylesheet" href="../../../Libraries/bootstrap.css">
+     <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css">
+
+     <style type="text/css">
+        .button {
+            width: 100px;
+            height: 51px;
+            font-size: 30px;
+        }
+
+        .result {
+            background-color: #5CB85C;
+            height: 95px;
+            padding: 30px 0px;
+            font-size: 14px;
+            border-radius: 7px;
+        }
+    </style>
+
+</head>
+<body ng-app="">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="row well text-center">
+                    <p>Введите цифры и выберите операцию</p>
+                    <div class="col-md-6">
+                        <input type="number" ng-model="firstNumber" class="form-control" placeholder="Первое число" /><br />
+                        <input type="number" ng-model="secondNumber" class="form-control" placeholder="Второе число" /><br />
+                        <div ng-switch="operation">
+                            <div class="result" ng-switch-when="add">{{firstNumber}} + {{secondNumber}} = {{result}}</div>
+                            <div class="result" ng-switch-when="sub">{{firstNumber}} - {{secondNumber}} = {{result}}</div>
+                            <div class="result" ng-switch-when="mul">{{firstNumber}} * {{secondNumber}} = {{result}}</div>
+                            <div class="result" ng-switch-when="div">{{firstNumber}} / {{secondNumber}} = {{result}}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn button btn-primary" ng-click="operation='add';result=firstNumber+secondNumber">+</button>
+                        <button class="btn button btn-primary" ng-click="operation='sub';result=firstNumber-secondNumber">-</button>
+                        <button class="btn button btn-primary" ng-click="operation='mul';result=firstNumber*secondNumber">*</button>
+                        <button class="btn button btn-primary" ng-click="operation='div';result=firstNumber/secondNumber">/</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+</body>
+</html>
