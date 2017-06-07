@@ -13,12 +13,12 @@
         .controller("mainCtrl", function($scope){
 
             $scope.mode = {
-                ch1: true,
-                ch2: false,
-                ch3: false,
-                ch4: false,
-                ch5: false,
-                ch6: false
+                name: true,
+                price: false,
+                category: false,
+                count: false,
+                tax: false,
+                expiration: false
             };
 
             $scope.checkResult = "";
@@ -37,22 +37,24 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th><label for="cnm">Name</label><input id="cnm" type="checkbox" class="checkbox" ng-model="mode.name"              ng-false-value="'name'" /></th>
-                    <th><label for="cprc">Price</label><input id="cprc" type="checkbox" class="checkbox" ng-model="mode.price"          ng-true-value="'price'" /></th>
-                    <th>Category</th>
-                    <th>Count</th>
-                    <th>Tax</th>
-                    <th>Expiration</th>
+                    <th><label for="cnm">Name</label><input id="cnm" type="checkbox" class="checkbox" ng-model="mode.name"        ng-false-value="'name'" /></th>
+                    <th><label for="cnm">Price</label><input id="cnm" type="checkbox" class="checkbox" ng-model="mode.price"        ng-false-value="'name'" /></th>
+                    <th><label for="cnm">Category</label><input id="cnm" type="checkbox" class="checkbox" ng-model="mode.category"        ng-false-value="'name'" /></th>
+                    <th><label for="cnm">Count</label><input id="cnm" type="checkbox" class="checkbox" ng-model="mode.count"        ng-false-value="'name'" /></th>
+                    <th><label for="cnm">Tax</label><input id="cnm" type="checkbox" class="checkbox" ng-model="mode.tax"        ng-false-value="'name'" /></th>
+                    <th><label for="cnm">Expiration</label><input id="cnm" type="checkbox" class="checkbox" ng-model="mode.expiration"        ng-false-value="'name'" /></th>
+                    
+                    
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="item in items" ng-switch on="mode">
-                    <td ng-switch-when="mode.name">{{item.name}}</td>
-                     <td ng-switch-when="mode.price">{{item.price}}</td>
-                    <td>{{item.category}}</td>
-                    <td>{{item.count}}</td>
-                    <td>{{item.tax}}</td>
-                    <td>{{item.expiration}}</td>
+                <tr ng-repeat="item in items">
+                    <td ng-switch on="mode.name"><div ng-switch-when="true">{{item.name}}</div></td>
+                    <td ng-switch on="mode.price"><div ng-switch-when="true">{{item.price}}</div></td>
+                    <td ng-switch on="mode.category"><div ng-switch-when="true">{{item.category}}</div></td>
+                    <td ng-switch on="mode.count"><div ng-switch-when="true">{{item.count}}</div></td>
+                    <td ng-switch on="mode.tax"><div ng-switch-when="true">{{item.tax}}</div></td>
+                    <td ng-switch on="mode.expiration"><div ng-switch-when="true">{{item.expiration}}</div></td>
                 </tr>
             </tbody>
         </table>
