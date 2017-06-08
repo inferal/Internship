@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../../Libraries/angular.js"></script>
+    <link rel="stylesheet" href="../../../Libraries/bootstrap.css">
+    <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css">
+    <script src="app.js"></script>
+
+    <title>Вопрос ответ</title>
+</head>
+<body ng-controller="mainCtrl">
+<div class="container">
+    <form name="myForm">
+        <label>
+            <input type="radio" ng-model="mode.name" value="1">
+            Первый тест
+        </label><br/>
+        <label>
+            <input type="radio" ng-model="mode.name" value="2">
+            Второй тест
+        </label><br/>
+        <label>
+            <input type="radio" ng-model="mode.name" value="3">
+            Третий тест
+        </label><br/>
+        <label>
+            <input type="radio" ng-model="mode.name" value="4">
+            Четвертый тест
+        </label><br/>
+        <label>
+            <input type="radio" ng-model="mode.name" value="5">
+            Пятый тест
+        </label><br/>
+    </form>
+
+    <div ng-switch="mode.name">
+        <div ng-switch-when="1">
+            <h1>Как называлась компания в "Кремневой долине"</h1>
+            <label>
+                <input type="radio"> Goole
+            </label><br/>
+            <label>
+                <input type="radio" ng-click="result1()"> Пегий Дудочник
+            </label><br/>
+            <label>
+                <input type="radio" value="3"> Hooli
+            </label><br/>
+            <label>
+                <input type="radio" value="4"> Сарай
+            </label><br/>
+
+        </div>
+        <div ng-switch-when="2">
+            <h4>Популярное животные Австралии</h4>
+            <label>
+                <input type="radio"> Кузу
+            </label><br>
+            <label>
+                <input type="radio" > Ехидна
+            </label><br>
+            <label>
+                <input type="radio" ng-click="result2()"> Эму
+            </label><br>
+            <label>
+                <input type="radio"> Вомбат
+            </label>
+        </div>
+        <div ng-switch-when="3">
+            <h4>Самый большой город в мире</h4>
+            <label>
+                <input type="radio"> Гуанчжоу
+            </label><br>
+            <label>
+                <input type="radio" ng-click="result3()"> Токио
+            </label><br>
+            <label>
+                <input type="radio"> Джакарта
+            </label><br>
+            <label>
+                <input type="radio"> Шанхай
+            </label>
+        </div>
+        <div ng-switch-when="4">
+            <h4>Самый большой порт в мире</h4>
+            <label>
+                <input type="radio" ng-click="result4()"> Порт Шанхай
+            </label><br>
+            <label>
+                <input type="radio" > Порт Сингапур
+            </label><br>
+            <label>
+                <input type="radio"> Порт Гонгонг
+            </label><br>
+            <label>
+                <input type="radio"> Порт Шэньчжэнь
+            </label>
+        </div>
+        <div ng-switch-when="5">
+            <h4>Самый известный сериал в мире</h4>
+            <label>
+                <input type="radio" > Аббатство Даунтон
+            </label><br>
+            <label>
+                <input type="radio" > Великая война
+            </label><br>
+            <label>
+                <input type="radio"> Шерлок
+            </label><br>
+            <label>
+                <input type="radio" ng-click="result5()"> Игра престолов
+            </label>
+        </div>
+
+        <br> Показать Результат <input type="checkbox" ng-model="checked" ng-init="checked=false" ng-click="showTotal()"
+    /><br/>
+        <span ng-if="checked">Ваш Результат: {{total}}/ 5</span>
+    </div>
+
+</div>
+
+</body>
+</html>
