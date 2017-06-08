@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="SampleApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <script src="../../../Libraries/angular.js"></script>
+     
+     <link rel="stylesheet" href="../../../Libraries/bootstrap.css">
+     <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css">
+    <title>lesson_12_Task3</title>
+    <script>
+    var app = angular.module("SampleApp",[]);
+        app.controller("SampleAppCtrl", function($scope){
+
+            $scope.nameUrl = "files/name.html";
+            $scope.priceUrl = "";
+            $scope.categoryUrl = "";
+            $scope.countUrl = "";
+            $scope.taxUrl = "";
+            $scope.expirationUrl = "";
+
+            $scope.items = [
+             { name: "B Item", price: 10.9, category: "Category 1", count: 10, tax: 1.12, expiration: 10 },
+             { name: "A Item", price: 1.1, category: "Category 1", count: 8, tax: 0.55, expiration: 12 },
+             { name: "D Item", price: 2.6, category: "Category 2", count: 7, tax: 0.22, expiration: 5 },
+             { name: "C Item", price: 17.5, category: "Category 2", count: 33, tax: 2.77, expiration: 10 }];
+
+             
+
+             $scope.nameShowTable = function(){
+                 $scope.nameUrl = "files/name.html";
+             };
+            $scope.priceShowTable = function(){
+                $scope.priceUrl = "files/price.html";
+            };
+            $scope.categoryShowTable = function () {
+                $scope.categoryUrl = 'files/category.html';
+            };
+            $scope.countShowTable = function () {
+                $scope.countUrl = 'files/count.html';
+            };
+            $scope.taxShowTable = function () {
+                $scope.taxUrl = 'files/tax.html';
+            };
+            $scope.expirationShowTable = function () {
+                $scope.expirationUrl = 'files/expiration.html';
+            };
+        });
+        
+    </script>
+</head>
+
+<body ng-controller="SampleAppCtrl">
+
+    <div class="panel panel-primary" >
+        <table class="table">
+            <thead>
+                <tr>
+                    <th><label for="cnm">Name</label><input id="cnm" type="checkbox" class="checkbox" ng-click="nameShowTable()" checked ></th>
+                    <th><label for="cprc">Price</label><input id="cprc" type="checkbox" class="checkbox" ng-click="priceShowTable()"/></th>
+                    <th><label for="cctgr">Category</label><input id="cctgr" type="checkbox" class="checkbox" ng-click="categoryShowTable()"></th>
+                    <th><label for="ccnt">Count</label><input id="ccnt" type="checkbox" class="checkbox" ng-click="countShowTable()"></th>
+                    <th><label for="ctx">Tax</label><input id="ctx" type="checkbox" class="checkbox" ng-click="taxShowTable()"></th>
+                    <th><label for="cxp">Expiriation</label><input id="cxp" type="checkbox" class="checkbox" ng-click="expirationShowTable()"></th>
+                    
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in items">
+                    <td ng-include="nameUrl"></td>
+                    <td ng-include="priceUrl"></td>
+                    <td ng-include="categoryUrl"></td>
+                    <td ng-include="countUrl"></td>
+                    <td ng-include="taxUrl"></td>
+                    <td ng-include="expirationUrl"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
