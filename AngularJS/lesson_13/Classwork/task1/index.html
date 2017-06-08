@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
     <script src="../../../Libraries/angular.js"></script>
     <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css">
     <link rel="stylesheet" href="../../../Libraries/bootstrap.css">
     <script src="app.js"></script>
-    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Присвоение</title>
 </head>
-<body>
-ddd
+<body ng-controller="mainCtrl">
+<div class="container" >
+    <button class="btn" ng-click="changeBg()">Обработать</button>
+    <div ng-class="classNames">
+
+    </div>
+</div>
 </body>
 </html>
