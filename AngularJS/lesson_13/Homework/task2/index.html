@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../../Libraries/angular.js"></script>
+    <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css">
+    <link rel="stylesheet" href="../../../Libraries/bootstrap.css">
+
+    <title>10 Тегов DIV</title>
+    <script>
+        angular.module("myApp",[])
+            .controller("mainCtrl", function($scope){
+
+                $scope.divs = [
+                    {div: 'aaa'},
+                    {div: 'ccc'},
+                    {div: 'aaa'},
+                    {div: 'ttt'},
+                    {div: 'aaa'},
+                    {div: 'aaa'},
+                    {div: 'yyy'},
+                    {div: 'aaa'},
+                    {div: 'yyy'},
+                    {div: 'aaa'},
+                ]
+
+                $scope.searchValue = function () {
+                    $scope.searchQuery = angular.copy($scope.query);
+                    $scope.divsToFilter = $scope.divs;
+                    $scope.searchResult = true;
+                }
+        })
+
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<div class="container">
+    <input type="text" name="" placeholder="Введите слова для фильтра" ng-model="query">
+    <input type="button" class="btn btn-primary" value="Нажать" ng-click="searchValue()">
+</div>
+<div ng-repeat="divs in divsToFilter | filter: searchQuery">
+    <div class="container">
+        {{divs.div}}
+    </div>
+</div>
+</body>
+</html>
