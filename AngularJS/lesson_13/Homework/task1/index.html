@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../../Libraries/angular.js"></script>
+    <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css">
+    <link rel="stylesheet" href="../../../Libraries/bootstrap.css">
+    <style>
+        .color {
+            background-color: lightgreen;
+        }
+
+        .text {
+            font-size: 30px;
+        }
+
+        .border {
+            border: 1px solid black;
+            border-radius: 20px;
+        }
+
+        .size {
+            width: 200px;
+            height: 200px;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+
+    <title>Мой Филтер</title>
+    <script>
+        angular.module("myApp",[])
+            .controller("mainCtrl", function($scope){
+                $scope.styleObj = {
+                    color: true,
+                    border: false,
+                    size: false,
+                    text: false
+                }
+        })
+
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<div class="container">
+    <input type="checkbox" ng-model="styleObj.text" />Text <br />
+    <input type="checkbox" ng-model="styleObj.color" />Color <br />
+    <input type="checkbox" ng-model="styleObj.border" ng-init="styleObj.border = true" />Border <br />
+    <input type="checkbox" ng-model="styleObj.size" />Size <br />
+    <div ng-class="styleObj">Test</div>
+</div>
+</body>
+</html>
