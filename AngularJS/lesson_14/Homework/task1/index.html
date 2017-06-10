@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+     <meta charset="utf-8" />
+     <title>Калькулятор</title>
+     <script src="../../../Libraries/angular.js"></script>
+     <link rel="stylesheet" href="../../../Libraries/bootstrap.css">
+     <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css">
+
+     <style type="text/css">
+        .button {
+            width: 100px;
+            height: 51px;
+            font-size: 30px;
+        }
+
+        .result {
+            background-color: #5CB85C;
+            height: 95px;
+            padding: 30px 0px;
+            font-size: 14px;
+            border-radius: 7px;
+        }
+    </style>
+    <script src="app.js"></script>
+</head>
+<body ng-controller="mainCtrl">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="row well text-center">
+                    <h3>Введите цифры и выберите операцию</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon" id="firstNumber">Первое число</span>
+                                <input type="number" ng-model="firstNumber" placeholder="" class="form-control"/>
+                            </div>
+                        </div><br>
+                        <div class="col-md-6">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon" id="secondNumber">Второе число</span>
+                                <input type="number" ng-model="secondNumber" placeholder="" class="form-control"/>
+                            </div>
+                        </div>
+
+                    </div><br/>
+
+                    <div class="col-md-6">
+                        <button class="btn button btn-primary" ng-click="mySum()">+</button>
+                        <button class="btn button btn-primary" ng-click="myMinus()">-</button>
+                        <button class="btn button btn-primary" ng-click="myMultiplication()">*</button>
+                        <button class="btn button btn-primary" ng-click="myDivision()">/</button>
+                    </div>
+
+
+                    <h3>Результат</h3>
+                    <input type="text" class="form-control" placeholder="" ng-model="result">
+
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head>
+    <title>ToDo List (Task2)</title>
+    <script src="../../../Libraries/angular.js"></script>
+    <link href="../../../Libraries/bootstrap.css" rel="stylesheet" />
+    <link href=../../../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <script>
+
+        // Добавьте AngularJS контроллер
+        var model = {
+            task: [{name: "Купить молко", description: "Сходить на рынок и купить молоко", date: "2/18/2015", completed: true},
+                    {name: "Посмотреть видео урок по AngularJS", description: "Доcмотреть до конца урок на itvdn.com", date: "2/18/2015", completed: true}]
+        };
+
+        var myApp = angular.module("myApp", []);
+
+        myApp.controller("myAppCtrl", function($scope){
+
+              $scope.data = model;
+
+            $scope.clickAdd = function(){
+
+                $scope.data.task.push({
+                    name: $scope.inputName,
+                    description: $scope.inputDesctiption,
+                    date: $scope.inputDate,
+                    completed: false
+                });
+
+                $scope.inputName = "";
+                $scope.inputDesctiption = "";
+                $scope.inputDate = "";
+            }
+
+            $scope.showText = function(completed){
+                return completed ? "Да" : "Нет";
+            }
+
+              $scope.setStyle = function (completed) {
+                return completed ? "color:green" : "color:red; font-weight: bold";
+            }
+        });
+
+    </script>
+
+</head>
+<body ng-controller="myAppCtrl">
+
+    <div class="container">
+
+        <h3>ToDo List</h3>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Completed</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="task in data.task">
+                <td>{{task.name}}</td>
+                <td>{{task.description}}</td>
+                <td>{{task.date}}</td>
+                <td><input type="checkbox" ng-model="task.completed"/></td>
+                <td>
+                    <span style="{{setStyle(task.completed)}}">
+                        {{showText(task.completed)}}
+                    </span>
+                </td>
+            </tr>
+        </table>
+
+        <div>
+            <!-- Форма для добавления новых задач -->
+            <label>Name</label>
+            <input class="form-control" type="text" ng-model="inputName">
+            <label>Due Date</label>
+            <input class="form-control" type="text" ng-model="inputDate">
+            <label>Desctiption</label>
+            <input class="form-control" type="text" ng-model="inputDesctiption"><br>
+            <label>Completed</label><br>
+            <input type="checkbox"/><br>
+            <button class="btn btn-primary" ng-click="clickAdd()">Добавить</button>
+        </div>
+    </div>
+</body>
+</html>
