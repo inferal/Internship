@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../../Libraries/angular.js"></script>
+    <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css">
+    <link rel="stylesheet" href="../../../Libraries/bootstrap.css">
+    <title>Количество кликов по кнопке provider</title>
+    <script>
+        var module = angular.module("myApp",[]);
+            module.provider("triButton", function () {
+                var clickCounter = 1;
+
+                return {
+                    $get: function () {
+                        return {
+                            generate: function () {
+                                console.log('Button clicked' + ' ' + clickCounter);
+                                return clickCounter++;
+                            }
+                        }
+                    }
+                }
+            });
+
+        module.controller('mainCtrl', function ($scope, triButton) {
+            $scope.totalClicks = 0;
+            $scope.click = function () {
+                $scope.totalClicks = triButton.generate();
+            }
+        })
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<div class="well text-center">
+    <div class="btn-group" tri-button counter="buttons.totalClicks">
+        <button ng-click="click()" class="btn btn-primary">Click</button>
+    </div>
+    <div class="container text-center">
+        <h2>Total clicks: {{totalClicks}}</h2>
+    </div>
+</div>
+</body>
+</html>
