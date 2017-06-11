@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Start и Stop</title>
+    <script src="../../../Libraries/angular.js"></script>
+    <link rel="stylesheet" href="../../../Libraries/bootstrap.css">
+    <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css">
+    <script>
+        angular.module("myApp", [])
+            .controller("mainCtrl", function ($scope, $interval) {
+
+                $scope.counter = 0;
+
+                var stop;
+
+                $scope.start = function () {
+                    if(angular.isDefined(stop)) return;
+
+                    $scope.counter = 0;
+
+                    stop = $interval(function () {
+                        $scope.counter++;
+                    }, 1000)
+                };
+
+                $scope.stopTimer = function () {
+                    if(angular.isDefined(stop)){
+                        $interval.cancel(stop);
+                        stop = undefined;
+                    }
+                };
+
+            });
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<div class="container" style="text-align: center">
+    <h3>Start и Stop</h3>
+
+        <div class="btn-group">
+            <button class="btn btn-success" data-ng-click="start()">Start</button>
+        </div>
+        <div class="btn-group">
+            <button class="btn btn-danger" data-ng-click="stopTimer()">Stop</button>
+        </div><br><br>
+    <div style="font-size: 20px">
+        Timer: {{counter}}
+    </div>
+    </div>
+
+
+</body>
+</html>
