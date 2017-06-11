@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>$compile service</title>
+    <script src="../../../Libraries/angular.js"></script>
+    <link rel="stylesheet" href="../../../Libraries/bootstrap.css">
+    <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css">
+    <script>
+        angular.module("myApp", [], function ($compileProvider) {
+            $compileProvider.directive('compile', function ($compile) {
+
+                return function (scope, element, attrs) {
+                    scope.$watch(
+                        function (scope) {
+                            return scope.$eval(attrs.compile);
+                        },
+                        function (value) {
+                            element.html(value);
+                            $compile(element.contents())(scope);
+                        }
+                    );
+                };
+
+            });
+        })
+
+            .controller("mainCtrl", ['$scope', function($scope){
+                $scope.name = 'Ivan';
+                $scope.html = "Hello my name is <strong>{{name}}</strong>";
+            }]);
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+    <h3>Сервис $compile</h3>
+    <p compile="html"></p>
+</body>
+</html>
