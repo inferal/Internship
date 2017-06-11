@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>$interpolate service</title>
+    <script src="../../../Libraries/angular.js"></script>
+    <script src="../../../Libraries/angular-sanitize.js"></script>
+    <link rel="stylesheet" href="../../../Libraries/bootstrap.css">
+    <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css">
+    <script>
+        angular.module("myApp", ["ngSanitize"])
+            .controller("mainCtrl", function ($scope, $interpolate) {
+
+                var expr = 'Hello my name is {{name}}';
+                var data = { name: '<strong>Ivan</strong>' };
+
+                $scope.interpolateExpression = function () {
+                    var fn = $interpolate(expr);
+                    $scope.result = fn(data);
+
+
+                }
+            });
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+    <h3>Сервис $interpolate</h3>
+    <button ng-click="interpolateExpression()">$interpolate</button>
+    <p ng-bind-html="result"></p>
+</body>
+</html>
