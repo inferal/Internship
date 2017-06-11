@@ -5,47 +5,10 @@
     <script src="../../../Libraries/angular.js"></script>
     <link href="../../../Libraries/bootstrap.css" rel="stylesheet" />
     <link href=../../../Libraries/bootstrap-theme.css" rel="stylesheet" />
-    <script>
-
-        // Добавьте AngularJS контроллер
-        var model = {
-            task: [{name: "Купить молко", description: "Сходить на рынок и купить молоко", date: "2/18/2015", completed: true},
-                    {name: "Посмотреть видео урок по AngularJS", description: "Доcмотреть до конца урок на itvdn.com", date: "2/18/2015", completed: true}]
-        };
-
-        var myApp = angular.module("myApp", []);
-
-        myApp.controller("myAppCtrl", function($scope){
-
-              $scope.data = model;
-
-            $scope.clickAdd = function(){
-
-                $scope.data.task.push({
-                    name: $scope.inputName,
-                    description: $scope.inputDesctiption,
-                    date: $scope.inputDate,
-                    completed: false
-                });
-
-                $scope.inputName = "";
-                $scope.inputDesctiption = "";
-                $scope.inputDate = "";
-            }
-
-            $scope.showText = function(completed){
-                return completed ? "Да" : "Нет";
-            }
-
-              $scope.setStyle = function (completed) {
-                return completed ? "color:green" : "color:red; font-weight: bold";
-            }
-        });
-
-    </script>
+    <script src="app.js"></script>
 
 </head>
-<body ng-controller="myAppCtrl">
+<body ng-controller="mainCtrl">
 
     <div class="container">
 
@@ -60,16 +23,11 @@
                     <th>Completed</th>
                 </tr>
             </thead>
-            <tr ng-repeat="task in data.task">
+            <tr ng-repeat="task in tasks">
                 <td>{{task.name}}</td>
                 <td>{{task.description}}</td>
                 <td>{{task.date}}</td>
-                <td><input type="checkbox" ng-model="task.completed"/></td>
-                <td>
-                    <span style="{{setStyle(task.completed)}}">
-                        {{showText(task.completed)}}
-                    </span>
-                </td>
+                <td> {{showText(task.completed)}}</td>
             </tr>
         </table>
 
@@ -78,13 +36,19 @@
             <label>Name</label>
             <input class="form-control" type="text" ng-model="inputName">
             <label>Due Date</label>
-            <input class="form-control" type="text" ng-model="inputDate">
+            <input class="form-control" type="text" ng-model="inputDueDate">
             <label>Desctiption</label>
-            <input class="form-control" type="text" ng-model="inputDesctiption"><br>
+            <textarea class="form-control" type="text" ng-model="inputDesctiption"></textarea><br>
             <label>Completed</label><br>
-            <input type="checkbox"/><br>
+            <input type="checkbox" ng-model="inputCompleted"/><br>
             <button class="btn btn-primary" ng-click="clickAdd()">Добавить</button>
+        </div><br>
+
+        <div class="panel panel-primary" ng-if="newTaskSent" >
+            <h3 style="text-align: center">Следующий объект был отправлен на сервер</h3>
+            <p>{{newTaskObj}}</p>
         </div>
+
     </div>
 </body>
 </html>
