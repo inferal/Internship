@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>$parse service</title>
+    <script src="../../../Libraries/angular.js"></script>
+    <link rel="stylesheet" href="../../../Libraries/bootstrap.css">
+    <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css">
+    <script>
+        angular.module("myApp", [])
+            .controller("mainCtrl", function ($scope, $parse) {
+
+                $scope.expr = "";
+                var model = {num1: "", num2: ""};
+
+                $scope.parseExpression = function () {
+                    var fn = $parse($scope.expr);
+                    $scope.result = fn(model);
+                }
+            });
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+    <h3>Калькулятор</h3>
+    <input type="text" ng-model="expr" />
+    <button ng-click="parseExpression()">$parse</button>
+    <p>{{result}}</p>
+</body>
+</html>
