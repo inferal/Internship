@@ -2,20 +2,35 @@
 <html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
-    <title>сервис $anchorScroll</title>
+    <title>Плавный $anchorScroll</title>
     <script src="../../../Libraries/angular.js"></script>
+    <script src="../../../Libraries/angular-scroll.min.js"></script>
     <link rel="stylesheet" href="../../../Libraries/bootstrap.css">
     <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css">
+
     <script>
-        angular.module("myApp", [])
-            .controller("mainCtrl", function ($scope, $anchorScroll, $location) {
+        angular.module("myApp", ['duScroll'])
+            .controller("mainCtrl", function ($scope, $anchorScroll, $location, $document) {
+                var top = 0;
+                var duration = 2000;
                 $scope.scrollTo = function (id) {
                     $location.hash(id);
                     $anchorScroll();
+
                 };
 
                 $scope.show = function (id) {
                      $location.hash(id);
+
+
+
+                    $document.scrollTop(top, duration).then(function() {
+                        console && console.log('You just scrolled to the top!');
+                    });
+
+                    var offset = 30;
+                    var someElement = angular.element(document.getElementById(section));
+                    $document.scrollToElement(someElement, offset, duration);
                 };
             });
     </script>
