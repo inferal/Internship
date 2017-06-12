@@ -2122,7 +2122,7 @@ function toDebugString(obj) {
  */
 var version = {
   full: '1.3.13',    // all of these placeholder strings will be replaced by grunt's
-  major: 1,    // package task1
+  major: 1,    // package task
   minor: 3,
   dot: 13,
   codeName: 'meticulous-riffleshuffle'
@@ -5267,7 +5267,7 @@ function Browser(window, document, $log, $sniffer) {
    * @name $browser#defer
    * @param {function()} fn A function, who's execution should be deferred.
    * @param {number=} [delay=0] of milliseconds to defer the function execution.
-   * @returns {*} DeferId that can be used to cancel the task1 via `$browser.defer.cancel()`.
+   * @returns {*} DeferId that can be used to cancel the task via `$browser.defer.cancel()`.
    *
    * @description
    * Executes a fn asynchronously via `setTimeout(fn, delay)`.
@@ -5293,10 +5293,10 @@ function Browser(window, document, $log, $sniffer) {
    * @name $browser#defer.cancel
    *
    * @description
-   * Cancels a deferred task1 identified with `deferId`.
+   * Cancels a deferred task identified with `deferId`.
    *
    * @param {*} deferId Token returned by the `$browser.defer` function.
-   * @returns {boolean} Returns `true` if the task1 hasn't executed yet and was successfully
+   * @returns {boolean} Returns `true` if the task hasn't executed yet and was successfully
    *                    canceled.
    */
   self.defer.cancel = function(deferId) {
@@ -10401,10 +10401,10 @@ function $IntervalProvider() {
       * @name $interval#cancel
       *
       * @description
-      * Cancels a task1 associated with the `promise`.
+      * Cancels a task associated with the `promise`.
       *
       * @param {promise} promise returned by the `$interval` function.
-      * @returns {boolean} Returns `true` if the task1 was successfully canceled.
+      * @returns {boolean} Returns `true` if the task was successfully canceled.
       */
     interval.cancel = function(promise) {
       if (promise && promise.$$intervalId in intervals) {
@@ -12981,7 +12981,7 @@ function $ParseProvider() {
  *
  * The purpose of the deferred object is to expose the associated Promise instance as well as APIs
  * that can be used for signaling the successful or unsuccessful completion, as well as the status
- * of the task1.
+ * of the task.
  *
  * **Methods**
  *
@@ -13003,7 +13003,7 @@ function $ParseProvider() {
  * calling `deferred.promise`.
  *
  * The purpose of the promise object is to allow for interested parties to get access to the result
- * of the deferred task1 when it completes.
+ * of the deferred task when it completes.
  *
  * **Methods**
  *
@@ -13132,7 +13132,7 @@ function qFactory(nextTick, exceptionHandler) {
    * @kind function
    *
    * @description
-   * Creates a `Deferred` object which represents a task1 which will finish in the future.
+   * Creates a `Deferred` object which represents a task which will finish in the future.
    *
    * @returns {Deferred} Returns a new instance of deferred.
    */
@@ -14433,7 +14433,7 @@ function $RootScopeProvider() {
        */
       $evalAsync: function(expr, locals) {
         // if we are outside of an $digest loop and this is the first time we are scheduling async
-        // task1 also schedule async auto-flush
+        // task also schedule async auto-flush
         if (!$rootScope.$$phase && !asyncQueue.length) {
           $browser.defer(function() {
             if (asyncQueue.length) {
@@ -16244,11 +16244,11 @@ function $TimeoutProvider() {
       * @name $timeout#cancel
       *
       * @description
-      * Cancels a task1 associated with the `promise`. As a result of this, the promise will be
+      * Cancels a task associated with the `promise`. As a result of this, the promise will be
       * resolved with a rejection.
       *
       * @param {Promise=} promise Promise returned by the `$timeout` function.
-      * @returns {boolean} Returns `true` if the task1 hasn't executed yet and was successfully
+      * @returns {boolean} Returns `true` if the task hasn't executed yet and was successfully
       *   canceled.
       */
     timeout.cancel = function(promise) {
