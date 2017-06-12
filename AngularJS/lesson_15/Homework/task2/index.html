@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>сервис $anchorScroll</title>
+    <script src="../../../Libraries/angular.js"></script>
+    <link rel="stylesheet" href="../../../Libraries/bootstrap.css">
+    <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css">
+    <script>
+        angular.module("myApp", [])
+            .controller("mainCtrl", function ($scope, $anchorScroll, $location) {
+                $scope.scrollTo = function (id) {
+                    $location.hash(id);
+                    $anchorScroll();
+                };
+
+                $scope.show = function (id) {
+                     $location.hash(id);
+                }
+            });
+    </script>
+    <style>
+        section{
+           padding: 20px 100px;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body ng-controller="mainCtrl">
+<div class="container">
+    <ul>
+        <li>
+            <a ng-click="scrollTo('home')">Home</a>
+        </li>
+        <li>
+            <a ng-click="scrollTo('about')">About</a>
+        </li>
+        <li>
+            <a ng-click="scrollTo('portfolio')">Portfolio</a>
+        </li>
+        <li>
+            <a ng-click="scrollTo('news')">News</a>
+        </li>
+        <li>
+            <a ng-click="scrollTo('map')">Map</a>
+        </li>
+    </ul>
+    <section id="home">
+        <h1>Home</h1>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi odit, recusandae deleniti ratione dolorem, aliquid sit, quod eligendi tempora dignissimos nisi numquam temporibus quis iure asperiores at. Doloremque quia molestias earum animi voluptatem
+        tempora obcaecati, quasi nulla, aperiam officiis asperiores totam voluptatibus repudiandae facere distinctio beatae assumenda recusandae quisquam porro. Excepturi illum numquam repudiandae, eligendi velit reiciendis possimus nostrum minus earum
+        at iste praesentium, quisquam quis recusandae similique molestiae et nobis mollitia laboriosam rem, ex cum fugit tempore accusantium. Iste, id eaque quam dolorum a rerum distinctio, quisquam animi. Inventore illum eum excepturi eveniet doloremque
+        dolorum voluptatibus repellendus temporibus, veritatis sit fuga! Dolore iusto, cumque totam nostrum qui eaque quo quasi veritatis animi pariatur est expedita doloribus, magni accusamus consectetur impedit, mollitia possimus dignissimos quidem. Quasi
+        possimus, minima et voluptas veritatis laudantium. Labore rem harum esse assumenda ex, earum fugit itaque fuga nam dolorum corporis quia repellendus, perferendis possimus modi iste dolore molestias quasi. Fugiat accusamus beatae repudiandae facere
+        eos qui ipsum nesciunt, aliquam omnis magnam quos necessitatibus voluptatum, iste voluptas reiciendis eius repellat laborum distinctio repellendus laboriosam. Sint, mollitia. Numquam expedita iusto non maxime! Modi alias delectus quis nihil illo
+        numquam dolorum deleniti odit maxime. Odio ab iusto neque voluptas quam dignissimos, rerum amet, ducimus optio impedit ipsam voluptates dolore quo cupiditate adipisci expedita. Odio reiciendis aut iusto temporibus porro, vel aperiam, esse repudiandae
+        totam assumenda voluptas, officia fugiat nulla ad facere magni illo enim incidunt distinctio hic accusantium aliquam quasi. Consequuntur quas maxime nam sit eligendi sed numquam expedita, doloribus aut tempora optio id repellat repudiandae nihil
+        at nostrum, debitis, ea. Dolorum id placeat hic? Cumque facere atque, magni quaerat porro, ut maxime nobis, consequatur itaque maiores fuga veritatis cum aspernatur in odit! Pariatur at minus magni quasi, expedita maxime explicabo nobis laboriosam
+        obcaecati, doloremque labore eveniet deserunt?
+        <div>
+            <button class="btn btn-primary" ng-click="show('top')">
+                Go to TOP
+            </button>
+        </div>
+    </section>
+
+    <section id="about">
+        <h1>About</h1>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi odit, recusandae deleniti ratione dolorem, aliquid sit, quod eligendi tempora dignissimos nisi numquam temporibus quis iure asperiores at. Doloremque quia molestias earum animi voluptatem
+        tempora obcaecati, quasi nulla, aperiam officiis asperiores totam voluptatibus repudiandae facere distinctio beatae assumenda recusandae quisquam porro. Excepturi illum numquam repudiandae, eligendi velit reiciendis possimus nostrum minus earum
+        at iste praesentium, quisquam quis recusandae similique molestiae et nobis mollitia laboriosam rem, ex cum fugit tempore accusantium. Iste, id eaque quam dolorum a rerum distinctio, quisquam animi. Inventore illum eum excepturi eveniet doloremque
+        dolorum voluptatibus repellendus temporibus, veritatis sit fuga! Dolore iusto, cumque totam nostrum qui eaque quo quasi veritatis animi pariatur est expedita doloribus, magni accusamus consectetur impedit, mollitia possimus dignissimos quidem. Quasi
+        possimus, minima et voluptas veritatis laudantium. Labore rem harum esse assumenda ex, earum fugit itaque fuga nam dolorum corporis quia repellendus, perferendis possimus modi iste dolore molestias quasi. Fugiat accusamus beatae repudiandae facere
+        eos qui ipsum nesciunt, aliquam omnis magnam quos necessitatibus voluptatum, iste voluptas reiciendis eius repellat laborum distinctio repellendus laboriosam. Sint, mollitia. Numquam expedita iusto non maxime! Modi alias delectus quis nihil illo
+        numquam dolorum deleniti odit maxime. Odio ab iusto neque voluptas quam dignissimos, rerum amet, ducimus optio impedit ipsam voluptates dolore quo cupiditate adipisci expedita. Odio reiciendis aut iusto temporibus porro, vel aperiam, esse repudiandae
+        totam assumenda voluptas, officia fugiat nulla ad facere magni illo enim incidunt distinctio hic accusantium aliquam quasi. Consequuntur quas maxime nam sit eligendi sed numquam expedita, doloribus aut tempora optio id repellat repudiandae nihil
+        at nostrum, debitis, ea. Dolorum id placeat hic? Cumque facere atque, magni quaerat porro, ut maxime nobis, consequatur itaque maiores fuga veritatis cum aspernatur in odit! Pariatur at minus magni quasi, expedita maxime explicabo nobis laboriosam
+        obcaecati, doloremque labore eveniet deserunt?
+        <div>
+            <button class="btn btn-primary" ng-click="show('top')">
+                Go to TOP
+            </button>
+        </div>
+    </section>
+    <section id="portfolio">
+        <h1>Portfolio</h1>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi odit, recusandae deleniti ratione dolorem, aliquid sit, quod eligendi tempora dignissimos nisi numquam temporibus quis iure asperiores at. Doloremque quia molestias earum animi voluptatem
+        tempora obcaecati, quasi nulla, aperiam officiis asperiores totam voluptatibus repudiandae facere distinctio beatae assumenda recusandae quisquam porro. Excepturi illum numquam repudiandae, eligendi velit reiciendis possimus nostrum minus earum
+        at iste praesentium, quisquam quis recusandae similique molestiae et nobis mollitia laboriosam rem, ex cum fugit tempore accusantium. Iste, id eaque quam dolorum a rerum distinctio, quisquam animi. Inventore illum eum excepturi eveniet doloremque
+        dolorum voluptatibus repellendus temporibus, veritatis sit fuga! Dolore iusto, cumque totam nostrum qui eaque quo quasi veritatis animi pariatur est expedita doloribus, magni accusamus consectetur impedit, mollitia possimus dignissimos quidem. Quasi
+        possimus, minima et voluptas veritatis laudantium. Labore rem harum esse assumenda ex, earum fugit itaque fuga nam dolorum corporis quia repellendus, perferendis possimus modi iste dolore molestias quasi. Fugiat accusamus beatae repudiandae facere
+        eos qui ipsum nesciunt, aliquam omnis magnam quos necessitatibus voluptatum, iste voluptas reiciendis eius repellat laborum distinctio repellendus laboriosam. Sint, mollitia. Numquam expedita iusto non maxime! Modi alias delectus quis nihil illo
+        numquam dolorum deleniti odit maxime. Odio ab iusto neque voluptas quam dignissimos, rerum amet, ducimus optio impedit ipsam voluptates dolore quo cupiditate adipisci expedita. Odio reiciendis aut iusto temporibus porro, vel aperiam, esse repudiandae
+        totam assumenda voluptas, officia fugiat nulla ad facere magni illo enim incidunt distinctio hic accusantium aliquam quasi. Consequuntur quas maxime nam sit eligendi sed numquam expedita, doloribus aut tempora optio id repellat repudiandae nihil
+        at nostrum, debitis, ea. Dolorum id placeat hic? Cumque facere atque, magni quaerat porro, ut maxime nobis, consequatur itaque maiores fuga veritatis cum aspernatur in odit! Pariatur at minus magni quasi, expedita maxime explicabo nobis laboriosam
+        obcaecati, doloremque labore eveniet deserunt?
+        <div>
+            <button class="btn btn-primary" ng-click="show('top')">
+                Go to TOP
+            </button>
+        </div>
+    </section>
+    <section id="news">
+        <h1>News</h1>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi odit, recusandae deleniti ratione dolorem, aliquid sit, quod eligendi tempora dignissimos nisi numquam temporibus quis iure asperiores at. Doloremque quia molestias earum animi voluptatem
+        tempora obcaecati, quasi nulla, aperiam officiis asperiores totam voluptatibus repudiandae facere distinctio beatae assumenda recusandae quisquam porro. Excepturi illum numquam repudiandae, eligendi velit reiciendis possimus nostrum minus earum
+        at iste praesentium, quisquam quis recusandae similique molestiae et nobis mollitia laboriosam rem, ex cum fugit tempore accusantium. Iste, id eaque quam dolorum a rerum distinctio, quisquam animi. Inventore illum eum excepturi eveniet doloremque
+        dolorum voluptatibus repellendus temporibus, veritatis sit fuga! Dolore iusto, cumque totam nostrum qui eaque quo quasi veritatis animi pariatur est expedita doloribus, magni accusamus consectetur impedit, mollitia possimus dignissimos quidem. Quasi
+        possimus, minima et voluptas veritatis laudantium. Labore rem harum esse assumenda ex, earum fugit itaque fuga nam dolorum corporis quia repellendus, perferendis possimus modi iste dolore molestias quasi. Fugiat accusamus beatae repudiandae facere
+        eos qui ipsum nesciunt, aliquam omnis magnam quos necessitatibus voluptatum, iste voluptas reiciendis eius repellat laborum distinctio repellendus laboriosam. Sint, mollitia. Numquam expedita iusto non maxime! Modi alias delectus quis nihil illo
+        numquam dolorum deleniti odit maxime. Odio ab iusto neque voluptas quam dignissimos, rerum amet, ducimus optio impedit ipsam voluptates dolore quo cupiditate adipisci expedita. Odio reiciendis aut iusto temporibus porro, vel aperiam, esse repudiandae
+        totam assumenda voluptas, officia fugiat nulla ad facere magni illo enim incidunt distinctio hic accusantium aliquam quasi. Consequuntur quas maxime nam sit eligendi sed numquam expedita, doloribus aut tempora optio id repellat repudiandae nihil
+        at nostrum, debitis, ea. Dolorum id placeat hic? Cumque facere atque, magni quaerat porro, ut maxime nobis, consequatur itaque maiores fuga veritatis cum aspernatur in odit! Pariatur at minus magni quasi, expedita maxime explicabo nobis laboriosam
+        obcaecati, doloremque labore eveniet deserunt?
+        <div>
+            <button class="btn btn-primary" ng-click="show('top')">
+                Go to TOP
+            </button>
+        </div>
+
+    </section>
+
+    <section id="map">
+        <h1>Map</h1>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi odit, recusandae deleniti ratione dolorem, aliquid sit, quod eligendi tempora dignissimos nisi numquam temporibus quis iure asperiores at. Doloremque quia molestias earum animi voluptatem
+        tempora obcaecati, quasi nulla, aperiam officiis asperiores totam voluptatibus repudiandae facere distinctio beatae assumenda recusandae quisquam porro. Excepturi illum numquam repudiandae, eligendi velit reiciendis possimus nostrum minus earum
+        at iste praesentium, quisquam quis recusandae similique molestiae et nobis mollitia laboriosam rem, ex cum fugit tempore accusantium. Iste, id eaque quam dolorum a rerum distinctio, quisquam animi. Inventore illum eum excepturi eveniet doloremque
+        dolorum voluptatibus repellendus temporibus, veritatis sit fuga! Dolore iusto, cumque totam nostrum qui eaque quo quasi veritatis animi pariatur est expedita doloribus, magni accusamus consectetur impedit, mollitia possimus dignissimos quidem. Quasi
+        possimus, minima et voluptas veritatis laudantium. Labore rem harum esse assumenda ex, earum fugit itaque fuga nam dolorum corporis quia repellendus, perferendis possimus modi iste dolore molestias quasi. Fugiat accusamus beatae repudiandae facere
+        eos qui ipsum nesciunt, aliquam omnis magnam quos necessitatibus voluptatum, iste voluptas reiciendis eius repellat laborum distinctio repellendus laboriosam. Sint, mollitia. Numquam expedita iusto non maxime! Modi alias delectus quis nihil illo
+        numquam dolorum deleniti odit maxime. Odio ab iusto neque voluptas quam dignissimos, rerum amet, ducimus optio impedit ipsam voluptates dolore quo cupiditate adipisci expedita. Odio reiciendis aut iusto temporibus porro, vel aperiam, esse repudiandae
+        totam assumenda voluptas, officia fugiat nulla ad facere magni illo enim incidunt distinctio hic accusantium aliquam quasi. Consequuntur quas maxime nam sit eligendi sed numquam expedita, doloribus aut tempora optio id repellat repudiandae nihil
+        at nostrum, debitis, ea. Dolorum id placeat hic? Cumque facere atque, magni quaerat porro, ut maxime nobis, consequatur itaque maiores fuga veritatis cum aspernatur in odit! Pariatur at minus magni quasi, expedita maxime explicabo nobis laboriosam
+        obcaecati, doloremque labore eveniet deserunt?
+        <div>
+            <button class="btn btn-primary" ng-click="show('top')">
+                Go to TOP
+            </button>
+        </div>
+    </section>
+</div>
+</body>
+</html>
