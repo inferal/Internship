@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../../Libraries/angular.js"></script>
+    <script src="../../../Libraries/angular_route.js"></script>
+    <link rel="stylesheet" href="../../../Libraries/bootstrap.css">
+    <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css">
+    <title>Task1 ClassWork</title>
+
+    <script>
+
+        angular.module('myApp', ['ngRoute'])
+            .config(function ($routeProvider) {
+
+                $routeProvider
+                    .when('/', {
+                        templateUrl: 'files/index.html',
+                    })
+                    .when('/sampleView', {
+                        templateUrl: 'files/view1.html',
+                    })
+                    .when('/about', {
+                        templateUrl: 'files/view2.html'
+                    })
+                    .otherwise({
+                        redirectTo: '/'
+                    })
+            })
+
+    </script>
+
+</head>
+<body>
+<div class="panel panel-primary well">
+    <ul class="nav nav-tabs">
+        <li><a href="#/home">Home</a></li>
+        <li><a href="#/sampleView">sampleView</a></li>
+        <li><a href="#/about">About</a></li>
+    </ul>
+</div>
+<div class="panel" ng-view></div>
+
+</body>
+</html>
