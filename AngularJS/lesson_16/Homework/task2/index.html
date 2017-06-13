@@ -2,21 +2,57 @@
 <html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
-    <script src="../../../Libraries/angular.js"></script>
-    <script src="../../../Libraries/angular_route.js"></script>
-    <link rel="stylesheet" href="../../../Libraries/bootstrap.css">
-    <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css">
-    <title>Task1 ClassWork</title>
+    <base href="/" />
+    <script src="Internship/AngularJS/Libraries/angular.js"></script>
+    <script src="Internship/AngularJS/Libraries/angular_route.js"></script>
+    <link rel="stylesheet" href="Internship/AngularJS/Libraries/bootstrap.css">
+    <link rel="stylesheet" href="Internship/AngularJS/Libraries/bootstrap-theme.css">
+    <title>Task2 HomeWork</title>
 
     <script>
 
-        var app = angular.module('myApp', [])
+        angular.module('myApp', ['ngRoute'])
+            .config(function ($routeProvider, $locationProvider) {
 
+                $routeProvider
+                    .when('/', {
+                        templateUrl: 'Internship/AngularJS/lesson_16/Classwork/task2/files/index.html',
+                    })
+                    .when('/home', {
+                        templateUrl: 'Internship/AngularJS/lesson_16/Homework/task2/view/home.html',
+                    })
+                    .when('/contact', {
+                        templateUrl: 'Internship/AngularJS/lesson_16/Homework/task2/view/contact.html'
+                    })
+                    .otherwise({
+                        redirectTo: '/'
+                    });
+
+                $locationProvider.html5Mode(true);
+            })
+
+            .controller('homeCtrl', function ($scope) {
+
+                $scope.people = [
+                    {name: 'Vasya', age: 20, email: 'vasya@mail.ru', employed: false},
+                    {name: 'Masha', age: 25, email: 'm@m', employed: true},
+                    {name: 'Petya', age: 27, email: 'petya@stuff', employed: true},
+                    {name: 'John', age: 36, email: 'johnDoe@mail', employed: true},
+                    {name: 'Jane', age: 28, email: 'janeDoe@mail', employed: false}]
+            })
 
     </script>
 
 </head>
 <body>
+<div class="panel panel-primary well">
+    <ul class="nav nav-tabs">
+        <li><a href="index">index</a></li>
+        <li><a href="home">Home</a></li>
+        <li><a href="contact">Contact</a></li>
+    </ul>
+</div>
+<div class="panel" ng-view></div>
 
 </body>
 </html>

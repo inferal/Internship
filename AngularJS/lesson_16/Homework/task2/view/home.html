@@ -1,0 +1,13 @@
+﻿<form name="contactForm">
+ <label>username:   <input type="text" class="input-lg" name="userName"/></label>
+ <label>age:   <input type="text" class="input-lg" name="age" /></label>
+ <label>email: <input type="email" class="input-lg" name="userEmail" /></label>
+    <label>employed: <input type="checkbox" name="employed"></label>
+</form>
+
+<div class="panel well-lg panel-primary" ng-controller="homeCtrl">
+    <h3>Занятые</h3>
+    <ul>
+        <li ng-repeat="employed in people"><a href="#!{{employed.name | lowercase}}">{{employed.name}}</a></li>
+    </ul>
+</div>
