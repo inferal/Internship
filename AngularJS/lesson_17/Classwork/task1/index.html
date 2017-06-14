@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+
+    <script src="../../../Libraries/angular.js"></script>
+    <link rel="stylesheet" href="../../../Libraries/bootstrap.css">
+
+    <title>Task1 lesson_17</title>
+
+    <script>
+        angular.module('myApp', [])
+            .controller('mainCtrl', function ($scope) {
+                $scope.list = [
+                    {name: "Table"},
+                    {name: "Chair"},
+                    {name: "Pillow"},
+                    {name: "Picture"},
+                    {name: "Lamp"}
+                ]
+            })
+
+            .directive('listTable', function () {
+                
+                return function (scope, element, attributes) {
+                    
+                    var listValue  = attributes['listTable'];
+                    var data = scope[listValue ];
+
+                    if(angular.isArray(data)){
+                        var e = angular.element('<ol>');
+                        element.append(e);
+                        for(var i = 0; i < data.length; i++){
+                            e.append(angular.element('<li>'). text(data[i].name));
+                        }
+                    }
+                }
+            })
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<div class="container jumbotron text-center">
+    <h2>Список Стола</h2>
+</div>
+<div class="jumbotron container">
+    <div list-table='list'></div>
+</div>
+
+</body>
+</html>
