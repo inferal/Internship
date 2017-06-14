@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+
+    <script src="../../../Libraries/angular.js"></script>
+    <link rel="stylesheet" href="../../../Libraries/bootstrap.css">
+
+    <title>Task3 lesson_17</title>
+    <style>
+        form .ng-valid.ng-dirty {
+            background-color: lightgreen;
+        }
+
+        form .ng-invalid.ng-dirty {
+            background-color: lightcoral;
+        }
+    </style>
+
+    <script>
+        angular.module('myApp', [])
+            .controller('mainCtrl', function ($scope) {
+                $scope.nameRegex = /^.{3,20}$/;
+                $scope.mailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]+$/;
+                $scope.loginRegex = /^.{3,20}$/;
+                $scope.passwordRegex = /^[0-9]*$/;
+
+                $scope.submitHandler = function(isvalid) {
+                    if (isvalid) {
+                        alert('Form is Valid, sending data!)')
+                    }
+                    else {
+                        alert('Form is invalid!');
+                    }
+                }
+
+            })
+
+            .directive('example', function () {
+                return{
+                    link: function (scope, element, attributes) {
+                        scope.data = scope[attributes["example"]];
+
+                    },
+                    restrict: "A",
+
+                    templateUrl: 'templates/tableTemplate.html'
+                }
+
+            })
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<div example></div>
+
+</body>
+</html>

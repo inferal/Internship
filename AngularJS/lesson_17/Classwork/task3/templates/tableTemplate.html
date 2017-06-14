@@ -1,0 +1,25 @@
+﻿<div class="container jumbotron">
+    <h2 class="text-center"><span>Форма регистрации нового пользователя</span></h2>
+    <form name="myForm" ng-submit="submitHandler(myForm.$valid)">
+
+        <div class="form-group">
+            <label>First name</label>
+            <input class="input-gl form-control" placeholder="Enter your first name" type="text" ng-model="myForm.name" ng-pattern="nameRegex">
+        </div>
+        <div class="form-group">
+            <label>Login</label>
+            <input class="form-control" name='login' placeholder="Enter your login" type="text" ng-model="myForm.login" ng-pattern="loginRegex">
+
+        </div>
+        <div class="form-group">
+            <label>E-mail</label>
+            <input class="form-control" name='email' placeholder="Enter your email" type="email" ng-model="myForm.email" ng-pattern="mailRegex">
+
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input class="form-control" name='password' type='password' placeholder="Enter your password" ng-model="myForm.Password" ng-pattern="passwordRegex">
+        </div>
+        <input type="submit" value='Register'>
+    </form>
+</div>
