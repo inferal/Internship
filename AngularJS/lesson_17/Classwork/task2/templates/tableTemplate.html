@@ -1,26 +1,23 @@
-﻿<div class="container jumbotron" id="maintable">
-    <h2 class="text-center"><span>New User Registration Form</span></h2>
-    <form name='newuser' novalidate>
+﻿<div class="container jumbotron">
+    <h2 class="text-center"><span>Форма регистрации нового пользователя</span></h2>
+    <form name="myForm">
         <div class="form-group">
-            <label for="name">First name</label>
-            <input class="form-control" name='name' placeholder="Enter your first name" ng-model="data.name" ng-required='true'>
-            <div ng-show="newuser.name.$touched && newuser.name.$invalid"><small>{{getError(newuser.name.$error)}}</small></div>
+            <label>First name</label>
+            <input class="form-control" name='name' placeholder="Enter your first name" type="text">
         </div>
         <div class="form-group">
-            <label for="name">Login</label>
-            <input class="form-control" name='login' placeholder="Enter your login" ng-model="data.login" ng-required='true'>
-            <div ng-show="newuser.login.$touched && newuser.login.$invalid"><small>{{getError(newuser.login.$error)}}</small></div>
-        </div>
-        <div class="form-group">
-            <label for="employees">E-mail</label>
-            <input class="form-control" name='email' placeholder="Enter your email" ng-model="data.email" ng-required='true' type="email">
-            <div ng-show="newuser.email.$touched && newuser.email.$invalid"><small>{{mailGetError(newuser.email.$error)}}</small></div>
+            <label>Login</label>
+            <input class="form-control" name='login' placeholder="Enter your login" type="text">
 
         </div>
         <div class="form-group">
-            <label for="password">Password</label>
-            <input class="form-control" name='password' type='password' placeholder="Enter your password" ng-model="data.password" ng-required='true'>
-            <div ng-show="newuser.password.$touched && newuser.password.$invalid"><small>{{getError(newuser.password.$error)}}</small></div>
+            <label>E-mail</label>
+            <input class="form-control" name='email' placeholder="Enter your email" type="email">
+
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input class="form-control" name='password' type='password' placeholder="Enter your password">
         </div>
         <input type="submit" value='Register'>
     </form>
