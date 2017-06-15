@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../../Libraries/angular.js"></script>
+    <link rel="stylesheet" href="../../../Libraries/bootstrap.css">
+    <title>Task1 HomeWork</title>
+
+    <script>
+        angular.module('myApp', [])
+            .controller('mainCtrl', function ($scope) {
+
+                $scope.list = [
+                    { name: "Table", price: 44.10 },
+                    { name: "Chair", price: 21.20 },
+                    { name: "Pillow", price: 12.20 },
+                    { name: "Picture", price: 112.70 },
+                    { name: "Lamp", price: 28.31 }
+                ];                
+            })
+            .directive('listTable', function () {
+                
+                aaa = {
+
+                    restrict: 'E',
+
+                        link: function (scope, element, attributes) {
+
+                            console.log ('scope', scope);
+                            console.log ('element', element);
+                            console.log ('attributes', attributes);
+
+                        var items = scope.list;
+
+                        var tableElem = angular.element('<table class="table">');
+                        var tableHeadElem = angular.element('<thead>');
+                        var tableHeadersElem = tableHeadElem.append('<tr class="bg-primary"><th> </th><th>Name</th><th>Price</th>');
+                        var tableBodyElem =  angular.element('<tbody>');
+
+                        for (var i = 0; i < items.length; i++){
+
+                            var row = angular.element('<tr>');
+
+                            row.append(angular.element('<td>').text(i+1));
+                            row.append(angular.element('<td>').text(items[i].name));
+                            row.append(angular.element('<td>').text(items[i].price));
+                            tableBodyElem.append(row);
+                        }
+
+                        tableElem.append(tableHeadersElem).append(tableBodyElem);
+                            element.append(tableElem);
+                    },
+                    replace: true,
+                };
+
+                return aaa;
+            })
+    </script>
+
+</head>
+<body ng-controller="mainCtrl">
+    <div class="panel">
+        <list-table></list-table>
+    </div>
+</body>
+</html>
