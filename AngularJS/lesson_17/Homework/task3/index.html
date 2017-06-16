@@ -1,0 +1,23 @@
+<!--
+Создайте директиву для генерации меню.
+В качестве источника данных директива должна использовать массив объектов,
+одно из свойств объекта должено содержать текст элемента меню,
+второе свойство должно использоватся для определения адреса перехода
+при клике по элементу меню.
+-->
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../../Libraries/angular.js"></script>
+    <script src="../../../Libraries/angular_route.js"></script>
+    <link rel="stylesheet" href="../../../Libraries/bootstrap.css">
+    <script src="app.js"></script>
+    <title>Task3 HomeWork</title>
+</head>
+<body ng-controller="mainCtrl">
+<div class="container">
+    <my-menu></my-menu>
+</div>
+</body>
+</html>

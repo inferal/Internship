@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../../Libraries/angular.js"></script>
+    <link rel="stylesheet" href="../../../Libraries/bootstrap.css">
+    <title>Task1 ClassWork</title>
+
+    <script>
+        angular.module('myApp', [])
+            .controller('mainCtrl', function ($scope, $interval) {
+
+                $scope.counter = 0;
+                var interval;
+
+                $scope.startCounter = function () {
+                    interval = $interval(function () {
+                        $scope.counter++;
+                    }, 1000)
+                }
+        })
+            .directive('buttonDir', function () {
+                return{
+                    restrict: 'A',
+                    templateUrl: 'templates/template.html',
+
+                    controller: 'mainCtrl'
+                }
+            })
+    </script>
+</head>
+<body>
+<div class="panel">
+    <div button-dir>
+
+    </div>
+</div>
+</body>
+</html>
