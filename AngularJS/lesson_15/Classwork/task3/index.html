@@ -1,3 +1,12 @@
+<!--
+Используя сервис $compile выведите имя в шаблоне жирным начертанием используя тег <strong>:
+
+```
+"Hello my name is {{name}}"
+var data = { name: "<strong>Ivan</strong>" }
+```
+-->
+
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
 <head>
@@ -7,33 +16,16 @@
     <link rel="stylesheet" href="../../../Libraries/bootstrap.css">
     <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css">
     <script>
-        angular.module("myApp", [], function ($compileProvider) {
-            $compileProvider.directive('compile', function ($compile) {
-
-                return function (scope, element, attrs) {
-                    scope.$watch(
-                        function (scope) {
-                            return scope.$eval(attrs.compile);
-                        },
-                        function (value) {
-                            element.html(value);
-                            $compile(element.contents())(scope);
-                        }
-                        
-                    );
-                };
-
-            });
-        })
-
-            .controller("mainCtrl", ['$scope', function($scope){
-                $scope.name = 'Ivan';
-                $scope.html = "Hello my name is <strong>{{name}}</strong>";
-            }]);
+        angular.module("myApp", [])
+            .controller('mainCtrl', ['$scope', '$compile', function ($scope, $compile) {
+                var name = "Ivan";
+                var textName = $compile('<span>Hello my name is </span><strong>'+ name + '</strong>')($scope);
+                        angular.element(document.getElementById('holder')).append(textName);
+            }])
     </script>
 </head>
 <body ng-controller="mainCtrl">
     <h3>Сервис $compile</h3>
-    <p compile="html"></p>
+    <div id="holder"></div>
 </body>
 </html>
