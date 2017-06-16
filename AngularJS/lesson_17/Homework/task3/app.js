@@ -5,32 +5,42 @@ angular.module('myApp', ['ngRoute'])
             {
                 id: '1',
                 menu: 'Home',
-                description: 'HOME'
+                description: '/home.html'
             },
             {
                 id: '2',
                 menu: 'Contact',
-                description: 'CONTACT'
+                description: '/contact.html'
             },
             {
                 id: '3',
                 menu: 'Map',
-                description: 'MAP'
+                description: '/map.html'
             }
         ];
     })
-    .controller('menuCtrl', function ($scope, $route, $routeParams) {
-        $scope.itemPrice = $scope.items[$routeParams.index].description;
-    })
+
+
     .config(function ($routeProvider) {
-        $routeProvider.when('/views/:index', {template: '<h4>{{itemPrice}}</h4>', controller: 'menuCtrl'});
+        $routeProvider
+            .when('/home',
+                {
+                    templateUrl: 'views/home.html'
+                })
+            .when('/contact',
+                {
+                    templateUrl: 'views/contact.html'
+                })
+            .when('/map',
+                {
+                    templateUrl: 'views/map.html'
+                })
     })
 
     .directive('myMenu', function () {
         return {
             restrict: 'E',
             templateUrl: 'templates/menu.html',
-            scope:false,
             replace: true
         }
     })
