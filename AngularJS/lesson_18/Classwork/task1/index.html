@@ -8,7 +8,7 @@
 
     <script>
         angular.module('myApp', [])
-            .controller('mainCtrl', function ($scope, $interval) {
+            .controller('mainCtrl', function ($scope, $interval, $log) {
 
                 $scope.counter = 0;
                 var interval;
@@ -17,13 +17,17 @@
                     interval = $interval(function () {
                         $scope.counter++;
                     }, 1000)
-                }
+                };
+                $scope.stopCounter = function () {
+                    $interval.cancel(interval);
+                };
+                $log.log($scope);
         })
             .directive('buttonDir', function () {
                 return{
                     restrict: 'A',
                     templateUrl: 'templates/template.html',
-
+                    scope: {iScope: "@prop"},
                     controller: 'mainCtrl'
                 }
             })

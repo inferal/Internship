@@ -16,27 +16,12 @@
                     })
                 }
 
-                $scope.sendRequest1 =function () {
-                    $http({
-                        method: 'GET',
-                        url: 'data/data.json'
-                    }).then(function successHandle(response)
-                    {
-                        $scope.tableHeaders = response.data;
-                        alert('Success ' + response.statusText);
-                    }, function errorHandler(response)
-                    {
-                        alert('Error!!! ' + response.statusText);
-                    })
-                }
-
         })
     </script>
 </head>
 <body ng-controller="mainCtrl">
 <div class="container jumbotron text-center">
     <input type="button" value="Grab Items" class="btn-lg btn-success" ng-click="sendRequest()" />
-    <input type="button" value="Grab table headers" class="btn-lg btn-success" ng-click="sendRequest()" />
     <table class="table">
         <thead>
         <tr>

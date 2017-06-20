@@ -7,13 +7,13 @@ myApp.service("mainService", function () {
         {
             name: "Купить молко",
             description: "Сходить на рынок и купить молоко",
-            date: "2/18/2015",
+            dueDate: "2/18/2015",
             completed: false
         },
         {
             name: "Посмотреть видео урок по AngularJS",
             description: "Доcмотреть до конца урок на itvdn.com",
-            date: "2/18/2015",
+            dueDate: "2/18/2015",
             completed: false
         }
     ];
@@ -30,7 +30,7 @@ myApp.service("mainService", function () {
 
         obj.name = inputName;
         obj.description = inputDescription;
-        obj.duedate = inputDueDate;
+        obj.dueDate = inputDueDate;
         obj.completed = inputComleted;
 
         service.toDoList.push(obj);
