@@ -64,10 +64,6 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	/*function Welcome(props) {
-	    return <h1>Hello, {props.name}</h1>;
-	}*/
-
 	var Welcome = function (_React$Component) {
 	    _inherits(Welcome, _React$Component);
 
