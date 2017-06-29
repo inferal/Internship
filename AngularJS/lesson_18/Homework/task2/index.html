@@ -1,0 +1,34 @@
+<!--
+Создайте две директивы.
+Первая создает список ul с произвольным количеством элементов.
+Вторая директива добавляет четным элементам списка
+CSS класс ‘red’ со следующим значением:
+```
+.red {
+color: red
+}
+```
+Обе директивы используются в качестве атрибутов и
+применяются к одному и тому же элементу.
+При решении задачи используйте приоритет директив.
+-->
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <script src="../../../Libraries/angular.js"></script>
+    <link rel="stylesheet" href="../../../Libraries/bootstrap.css">
+    <meta charset="UTF-8">
+    <title>Task2 HomeWork lesson_18</title>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+    <script src="app.js"></script>
+</head>
+<body ng-controller="mainCtrl">
+<div class="container">
+    <div ul-dir red-dir></div>
+</div>
+</body>
+</html>
