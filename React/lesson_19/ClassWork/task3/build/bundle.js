@@ -67,8 +67,6 @@
 	/* Создайте React компонент, который принимает два числа в качестве свойств (props).
 	Компонент должен выводить на экран сумму своих свойств. */
 
-	var sum = +props.one + +props.two;
-
 	var Summa = function (_React$Component) {
 	    _inherits(Summa, _React$Component);
 
@@ -81,6 +79,8 @@
 	    _createClass(Summa, [{
 	        key: 'render',
 	        value: function render() {
+
+	            var sum = +this.props.one + +this.props.two;
 	            return _react2.default.createElement(
 	                'h1',
 	                null,
@@ -92,7 +92,7 @@
 	    return Summa;
 	}(_react2.default.Component);
 
-	var element = _react2.default.createElement(Summa, { one: '22', two: '+22' });
+	var element = _react2.default.createElement(Summa, { one: '25', two: '22' });
 
 	_reactDom2.default.render(element, document.getElementById('example'));
 
