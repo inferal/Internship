@@ -62,39 +62,92 @@
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*  Задача 3 */
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* Задача 1 */
 
-	/* Создайте React компонент, который принимает два числа в качестве свойств (props).
-	Компонент должен выводить на экран сумму своих свойств. */
+	/* Создайте React компонент, который выведет на экран массив users в виде таблицы. Массив users для задачи:
 
-	var Summa = function (_React$Component) {
-	    _inherits(Summa, _React$Component);
+	 var users = [{name:"Anne Montgomery",gender:"Female"},
+	 {name:"Annie George",gender:"Female"},
+	 {name:"Gary Butler",gender:"Male"},
+	 {name:"Lisa Mendoza",gender:"Female"},
+	 {name:"Marilyn Henry",gender:"Female"},
+	 {name:"Johnny Tucker",gender:"Male"},
+	 {name:"Chris Jacobs",gender:"Male"},
+	 {name:"Benjamin James",gender:"Male"}]
+	 */
 
-	    function Summa() {
-	        _classCallCheck(this, Summa);
+	var users = [{ name: "Anne Montgomery", gender: "Female" }, { name: "Annie George", gender: "Female" }, { name: "Gary Butler", gender: "Male" }, { name: "Lisa Mendoza", gender: "Female" }, { name: "Marilyn Henry", gender: "Female" }, { name: "Johnny Tucker", gender: "Male" }, { name: "Chris Jacobs", gender: "Male" }, { name: "Benjamin James", gender: "Male" }];
 
-	        return _possibleConstructorReturn(this, (Summa.__proto__ || Object.getPrototypeOf(Summa)).apply(this, arguments));
+	var TableRow = function (_React$Component) {
+	    _inherits(TableRow, _React$Component);
+
+	    function TableRow() {
+	        _classCallCheck(this, TableRow);
+
+	        return _possibleConstructorReturn(this, (TableRow.__proto__ || Object.getPrototypeOf(TableRow)).apply(this, arguments));
 	    }
 
-	    _createClass(Summa, [{
+	    _createClass(TableRow, [{
 	        key: 'render',
 	        value: function render() {
-	            var sum = +this.props.one + +this.props.two;
+	            var data = this.props.data;
 
+
+	            var row = data.map(function (data, i) {
+	                return _react2.default.createElement(
+	                    'tbody',
+	                    { key: i },
+	                    _react2.default.createElement(
+	                        'tr',
+	                        null,
+	                        _react2.default.createElement(
+	                            'td',
+	                            { key: data.name },
+	                            data.name
+	                        ),
+	                        _react2.default.createElement(
+	                            'td',
+	                            { key: data.gender },
+	                            data.gender
+	                        )
+	                    )
+	                );
+	            });
 	            return _react2.default.createElement(
-	                'h1',
+	                'span',
 	                null,
-	                sum
+	                row
 	            );
 	        }
 	    }]);
 
-	    return Summa;
+	    return TableRow;
 	}(_react2.default.Component);
 
-	var element = _react2.default.createElement(Summa, { one: '25', two: '22' });
+	var Table = function (_React$Component2) {
+	    _inherits(Table, _React$Component2);
 
-	_reactDom2.default.render(element, document.getElementById('example'));
+	    function Table(props) {
+	        _classCallCheck(this, Table);
+
+	        return _possibleConstructorReturn(this, (Table.__proto__ || Object.getPrototypeOf(Table)).call(this, props));
+	    }
+
+	    _createClass(Table, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'table',
+	                null,
+	                _react2.default.createElement(TableRow, { data: this.props.data })
+	            );
+	        }
+	    }]);
+
+	    return Table;
+	}(_react2.default.Component);
+
+	_reactDom2.default.render(_react2.default.createElement(Table, { data: users }), document.getElementById("example"));
 
 /***/ }),
 /* 1 */
