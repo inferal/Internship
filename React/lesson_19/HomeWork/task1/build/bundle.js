@@ -95,26 +95,22 @@
 
 	            var row = data.map(function (data, i) {
 	                return _react2.default.createElement(
-	                    'tbody',
+	                    'tr',
 	                    { key: i },
 	                    _react2.default.createElement(
-	                        'tr',
-	                        null,
-	                        _react2.default.createElement(
-	                            'td',
-	                            { key: data.name },
-	                            data.name
-	                        ),
-	                        _react2.default.createElement(
-	                            'td',
-	                            { key: data.gender },
-	                            data.gender
-	                        )
+	                        'td',
+	                        { key: data.name },
+	                        data.name
+	                    ),
+	                    _react2.default.createElement(
+	                        'td',
+	                        { key: data.gender },
+	                        data.gender
 	                    )
 	                );
 	            });
 	            return _react2.default.createElement(
-	                'span',
+	                'tbody',
 	                null,
 	                row
 	            );
@@ -137,9 +133,13 @@
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
-	                'table',
+	                'div',
 	                null,
-	                _react2.default.createElement(TableRow, { data: this.props.data })
+	                _react2.default.createElement(
+	                    'table',
+	                    null,
+	                    _react2.default.createElement(TableRow, { data: this.props.data })
+	                )
 	            );
 	        }
 	    }]);

@@ -33,16 +33,14 @@ class TableRow extends React.Component {
         const {data} = this.props;
 
         const row = data.map((data, i) =>
-            <tbody key={i}>
-            <tr>
+            <tr key={i}>
                 <td key={data.name}>{data.name}</td>
                 <td key={data.gender}>{data.gender}</td>
             </tr>
-            </tbody>
 
         );
         return (
-                <span>{row}</span>
+                <tbody>{row}</tbody>
 
         );
     }
@@ -54,9 +52,12 @@ class Table extends React.Component {
     }
     render() {
         return (
-            <table>
-                <TableRow data={this.props.data} />
-            </table>
+            <div>
+                <table>
+                    <TableRow data={this.props.data} />
+                </table>
+            </div>
+
         );
     }
 }
