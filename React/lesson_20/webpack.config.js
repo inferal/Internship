@@ -1,6 +1,8 @@
 module.exports = {
     entry: {
-        "ClassWork/task1/build/bundle": "./ClassWork/task1/jsx/main.jsx"
+        "ClassWork/task1/build/bundle": "./ClassWork/task1/jsx/main.jsx",
+        "ClassWork/task2/build/bundle": "./ClassWork/task2/jsx/main.jsx"
+
     },
 
     output:{
