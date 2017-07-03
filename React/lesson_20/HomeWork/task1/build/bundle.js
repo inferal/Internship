@@ -84,8 +84,10 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * При вводе числа в поле ввода должно отображаться соответсвующее количество элементов списка.
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
-	var Parent = function (_React$Component) {
-	    _inherits(Parent, _React$Component);
+	var users = [{ name: "Anne Montgomery", gender: "Female" }, { name: "Annie George", gender: "Female" }, { name: "Gary Butler", gender: "Male" }, { name: "Lisa Mendoza", gender: "Female" }, { name: "Marilyn Henry", gender: "Female" }, { name: "Johnny Tucker", gender: "Male" }, { name: "Chris Jacobs", gender: "Male" }, { name: "Benjamin James", gender: "Male" }];
+
+	var Parent = function (_Component) {
+	    _inherits(Parent, _Component);
 
 	    function Parent() {
 	        _classCallCheck(this, Parent);
@@ -96,59 +98,98 @@
 	    _createClass(Parent, [{
 	        key: 'render',
 	        value: function render() {
-	            return _react2.default.createElement(
-	                'ul',
-	                null,
-	                this.props.users.map(function (user, i) {
-	                    return _react2.default.createElement(
-	                        Child,
-	                        { key: user, name: user.name, gender: user.gender },
-	                        '1'
-	                    );
-	                })
-	            );
-	        }
-	    }], [{
-	        key: 'defaultProps',
-	        get: function get() {
-	            return {
-	                users: [{ name: "Anne Montgomery", gender: "Female" }, { name: "Annie George", gender: "Female" }, { name: "Gary Butler", gender: "Male" }, { name: "Lisa Mendoza", gender: "Female" }, { name: "Marilyn Henry", gender: "Female" }, { name: "Johnny Tucker", gender: "Male" }, { name: "Chris Jacobs", gender: "Male" }, { name: "Benjamin James", gender: "Male" }]
-	            };
+	            return _react2.default.createElement('input', { type: 'number', max: '8', min: '0', placeholder: '\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0447\u0438\u0441\u043B\u043E' });
 	        }
 	    }]);
 
 	    return Parent;
-	}(_react2.default.Component);
+	}(_react.Component);
 
-	var Child = function (_React$Component2) {
-	    _inherits(Child, _React$Component2);
+	var Chaild = function (_React$Component) {
+	    _inherits(Chaild, _React$Component);
 
-	    function Child() {
-	        _classCallCheck(this, Child);
+	    function Chaild(props) {
+	        _classCallCheck(this, Chaild);
 
-	        return _possibleConstructorReturn(this, (Child.__proto__ || Object.getPrototypeOf(Child)).apply(this, arguments));
+	        var _this2 = _possibleConstructorReturn(this, (Chaild.__proto__ || Object.getPrototypeOf(Chaild)).call(this, props));
+
+	        _this2.set;
+	        return _this2;
 	    }
 
-	    _createClass(Child, [{
+	    return Chaild;
+	}(_react2.default.Component);
+
+	var TableRow = function (_React$Component2) {
+	    _inherits(TableRow, _React$Component2);
+
+	    function TableRow() {
+	        _classCallCheck(this, TableRow);
+
+	        return _possibleConstructorReturn(this, (TableRow.__proto__ || Object.getPrototypeOf(TableRow)).apply(this, arguments));
+	    }
+
+	    _createClass(TableRow, [{
 	        key: 'render',
 	        value: function render() {
+	            var data = this.props.data;
+
+
+	            var row = data.map(function (data, i) {
+	                return _react2.default.createElement(
+	                    'tr',
+	                    { key: i },
+	                    _react2.default.createElement(
+	                        'td',
+	                        { key: data.name },
+	                        data.name
+	                    ),
+	                    _react2.default.createElement(
+	                        'td',
+	                        { key: data.gender },
+	                        data.gender
+	                    )
+	                );
+	            });
 	            return _react2.default.createElement(
-	                'li',
+	                'tbody',
 	                null,
-	                this.props.user,
-	                ';'
+	                row
 	            );
 	        }
 	    }]);
 
-	    return Child;
+	    return TableRow;
 	}(_react2.default.Component);
 
-	_reactDom2.default.render(_react2.default.createElement(
-	    Parent,
-	    null,
-	    _react2.default.createElement(Child, null)
-	), document.getElementById("example"));
+	var Table = function (_React$Component3) {
+	    _inherits(Table, _React$Component3);
+
+	    function Table(props) {
+	        _classCallCheck(this, Table);
+
+	        return _possibleConstructorReturn(this, (Table.__proto__ || Object.getPrototypeOf(Table)).call(this, props));
+	    }
+
+	    _createClass(Table, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'table',
+	                    null,
+	                    _react2.default.createElement(TableRow, { data: this.props.data })
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Table;
+	}(_react2.default.Component);
+
+	_reactDom2.default.render(_react2.default.createElement(Parent, null), document.getElementById("example"));
 
 /***/ }),
 /* 1 */
