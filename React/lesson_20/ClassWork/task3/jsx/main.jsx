@@ -38,5 +38,5 @@ class MyApp extends React.Component {
 
 
 ReactDOM.render(
-        <MyApp/>,
+    <MyApp/>,
     document.getElementById("example"));
