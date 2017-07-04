@@ -131,12 +131,7 @@
 	                    'label',
 	                    null,
 	                    '\u041F\u043E\u043C\u0435\u043D\u044F\u0442\u044C \u0432\u0438\u0434 \u0442\u0430\u043B\u0438\u0446\u044B \u043D\u0430 \u0441\u043F\u0438\u0441\u043A\u043E\u043C.',
-	                    _react2.default.createElement('input', { type: 'checkbox',
-	                        name: this.props.name,
-	                        checked: this.state.checked,
-	                        onChange: this.handler,
-	                        value: this.props.value,
-	                        defaultChecked: this.state.checked })
+	                    _react2.default.createElement('input', { type: 'checkbox' })
 	                ),
 	                _react2.default.createElement(
 	                    'table',
