@@ -23,7 +23,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-const users = [
+var users = [
     {name:"Anne Montgomery",gender:"Female"},
     {name:"Annie George",gender:"Female"},
     {name:"Gary Butler",gender:"Male"},
@@ -35,25 +35,77 @@ const users = [
 ];
 
 class Parent extends Component{
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            items: users
+        }
+    }
+
+    handlerLimit(event){
+        var searchQuery = event.target.value;
+        var limitedItems = users.slice(0, searchQuery);
+        this.setState({
+            items: limitedItems
+        })
+    }
+
+    handlerKey(event){
+        if((event.keyCode < 48 || event.keyCode > 57) && event.keyCode !== 8){
+            event.preventDefault()
+        }
+    }
+
     render(){
         return(
-            <input type="number" max="8" min="0" placeholder="Введите число"/>
+            <div>
+                <input type="text" onChange={this.handlerLimit.bind(this)} onKeyDown={this.handlerKey.bind(this)}/><br/>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Gender</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            {this.state.items.map((item, key) => {
+                                return <Chaild key={key} name={item.name} />
+                            })}
+                        </td>
+                        <td>
+                            {this.state.items.map((item, key) => {
+                                return <Chaild key={key} gender={item.gender} />
+                            })}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
         )
     }
 }
 
 class Chaild extends React.Component{
-    constructor(props){
+
+    constructor(props) {
         super(props);
 
-        this.state = {
-            items: "users"
-        }
+        this.state = {}
+    }
+    render(){
+        return(
+            <li style={{listStyleType:'none'}} key={this.props.index}>{this.props.name}{this.props.gender}</li>
+        )
     }
 }
 
 
-class TableRow extends React.Component {
+/*class TableRow extends React.Component {
     render() {
 
         const {data} = this.props;
@@ -72,6 +124,17 @@ class TableRow extends React.Component {
     }
 }
 
+ /*{
+ users.map((item, key) => {
+ return(
+ <tr key={key}>
+ <td>{ item.name }</td>
+ <td>{ item.gender }</td>
+ </tr>
+ );
+ })
+ }
+
 class Table extends React.Component {
     constructor(props) {
         super(props);
@@ -86,8 +149,8 @@ class Table extends React.Component {
 
         );
     }
-}
+}*/
 
 ReactDOM.render(
-    <Parent/>,
+    <Parent/> ,
     document.getElementById("example"));

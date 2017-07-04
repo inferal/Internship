@@ -89,16 +89,86 @@
 	var Parent = function (_Component) {
 	    _inherits(Parent, _Component);
 
-	    function Parent() {
+	    function Parent(props) {
 	        _classCallCheck(this, Parent);
 
-	        return _possibleConstructorReturn(this, (Parent.__proto__ || Object.getPrototypeOf(Parent)).apply(this, arguments));
+	        var _this = _possibleConstructorReturn(this, (Parent.__proto__ || Object.getPrototypeOf(Parent)).call(this, props));
+
+	        _this.state = {
+	            items: users
+	        };
+	        return _this;
 	    }
 
 	    _createClass(Parent, [{
+	        key: 'handlerLimit',
+	        value: function handlerLimit(event) {
+	            var searchQuery = event.target.value;
+	            var limitedItems = users.slice(0, searchQuery);
+	            this.setState({
+	                items: limitedItems
+	            });
+	        }
+	    }, {
+	        key: 'handlerKey',
+	        value: function handlerKey(event) {
+	            if ((event.keyCode < 48 || event.keyCode > 57) && event.keyCode !== 8) {
+	                event.preventDefault();
+	            }
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
-	            return _react2.default.createElement('input', { type: 'number', max: '8', min: '0', placeholder: '\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0447\u0438\u0441\u043B\u043E' });
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement('input', { type: 'text', onChange: this.handlerLimit.bind(this), onKeyDown: this.handlerKey.bind(this) }),
+	                _react2.default.createElement('br', null),
+	                _react2.default.createElement(
+	                    'table',
+	                    null,
+	                    _react2.default.createElement(
+	                        'thead',
+	                        null,
+	                        _react2.default.createElement(
+	                            'tr',
+	                            null,
+	                            _react2.default.createElement(
+	                                'td',
+	                                null,
+	                                'Name'
+	                            ),
+	                            _react2.default.createElement(
+	                                'td',
+	                                null,
+	                                'Gender'
+	                            )
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'tbody',
+	                        null,
+	                        _react2.default.createElement(
+	                            'tr',
+	                            null,
+	                            _react2.default.createElement(
+	                                'td',
+	                                null,
+	                                this.state.items.map(function (item, key) {
+	                                    return _react2.default.createElement(Chaild, { key: key, name: item.name });
+	                                })
+	                            ),
+	                            _react2.default.createElement(
+	                                'td',
+	                                null,
+	                                this.state.items.map(function (item, key) {
+	                                    return _react2.default.createElement(Chaild, { key: key, gender: item.gender });
+	                                })
+	                            )
+	                        )
+	                    )
+	                )
+	            );
 	        }
 	    }]);
 
@@ -113,81 +183,70 @@
 
 	        var _this2 = _possibleConstructorReturn(this, (Chaild.__proto__ || Object.getPrototypeOf(Chaild)).call(this, props));
 
-	        _this2.set;
+	        _this2.state = {};
 	        return _this2;
 	    }
+
+	    _createClass(Chaild, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'li',
+	                { style: { listStyleType: 'none' }, key: this.props.index },
+	                this.props.name,
+	                this.props.gender
+	            );
+	        }
+	    }]);
 
 	    return Chaild;
 	}(_react2.default.Component);
 
-	var TableRow = function (_React$Component2) {
-	    _inherits(TableRow, _React$Component2);
+	/*class TableRow extends React.Component {
+	    render() {
 
-	    function TableRow() {
-	        _classCallCheck(this, TableRow);
+	        const {data} = this.props;
 
-	        return _possibleConstructorReturn(this, (TableRow.__proto__ || Object.getPrototypeOf(TableRow)).apply(this, arguments));
+	        const row = data.map((data, i) =>
+	            <tr key={i}>
+	                <td key={data.name}>{data.name}</td>
+	                <td key={data.gender}>{data.gender}</td>
+	            </tr>
+
+	        );
+	        return (
+	            <tbody>{row}</tbody>
+
+	        );
 	    }
+	}
 
-	    _createClass(TableRow, [{
-	        key: 'render',
-	        value: function render() {
-	            var data = this.props.data;
+	 /*{
+	 users.map((item, key) => {
+	 return(
+	 <tr key={key}>
+	 <td>{ item.name }</td>
+	 <td>{ item.gender }</td>
+	 </tr>
+	 );
+	 })
+	 }
 
-
-	            var row = data.map(function (data, i) {
-	                return _react2.default.createElement(
-	                    'tr',
-	                    { key: i },
-	                    _react2.default.createElement(
-	                        'td',
-	                        { key: data.name },
-	                        data.name
-	                    ),
-	                    _react2.default.createElement(
-	                        'td',
-	                        { key: data.gender },
-	                        data.gender
-	                    )
-	                );
-	            });
-	            return _react2.default.createElement(
-	                'tbody',
-	                null,
-	                row
-	            );
-	        }
-	    }]);
-
-	    return TableRow;
-	}(_react2.default.Component);
-
-	var Table = function (_React$Component3) {
-	    _inherits(Table, _React$Component3);
-
-	    function Table(props) {
-	        _classCallCheck(this, Table);
-
-	        return _possibleConstructorReturn(this, (Table.__proto__ || Object.getPrototypeOf(Table)).call(this, props));
+	class Table extends React.Component {
+	    constructor(props) {
+	        super(props);
 	    }
+	    render() {
+	        return (
+	            <div>
+	                <table>
+	                    <TableRow data={this.props.data} />
+	                </table>
+	            </div>
 
-	    _createClass(Table, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(
-	                    'table',
-	                    null,
-	                    _react2.default.createElement(TableRow, { data: this.props.data })
-	                )
-	            );
-	        }
-	    }]);
-
-	    return Table;
-	}(_react2.default.Component);
+	        );
+	    }
+	}*/
 
 	_reactDom2.default.render(_react2.default.createElement(Parent, null), document.getElementById("example"));
 
