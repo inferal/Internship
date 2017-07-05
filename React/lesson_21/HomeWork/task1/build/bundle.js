@@ -63,15 +63,13 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Class Work
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Home Work
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * ### Задача 2
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * ### Задача 1
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Модифицируйте код предыдущей задачи.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Добавьте на странцу три кнопки:
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * сбросить счет (reset), start и stop,
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * которые предоставя пользователю останавлтвать/возобновлять работу таймера
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * и сбрасывать отсчитанное время.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Создайте React компонент-счетчик.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Он должен отображать на странице две кнопки (+ и -)
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * и элемент h1 для вывода текущего счета на экран.
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
 	var MyApp = function (_Component) {
@@ -82,68 +80,55 @@
 
 	        var _this = _possibleConstructorReturn(this, (MyApp.__proto__ || Object.getPrototypeOf(MyApp)).call(this, props));
 
-	        _this.state = { time: 0 };
-	        _this.stopCount = _this.stopCount.bind(_this);
-	        _this.startCount = _this.startCount.bind(_this);
-	        _this.resetCount = _this.resetCount.bind(_this);
+	        _this.state = {
+	            counter: 0
+	        };
+	        _this.plusCount = _this.plusCount.bind(_this);
+	        _this.minusCount = _this.minusCount.bind(_this);
 
 	        return _this;
 	    }
 
 	    _createClass(MyApp, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            this.timer = setInterval(this.tick.bind(this), 1000);
+	        key: 'plusCount',
+	        value: function plusCount() {
+	            this.setState({
+	                counter: this.state.counter + 1
+	            });
 	        }
 	    }, {
-	        key: 'tick',
-	        value: function tick() {
-	            this.setState({ time: this.state.time + 1 });
-	        }
-	    }, {
-	        key: 'startCount',
-	        value: function startCount() {
-	            clearInterval(this.timer);
-	            this.timer = setInterval(this.tick.bind(this), 1000);
-	        }
-	    }, {
-	        key: 'stopCount',
-	        value: function stopCount() {
-	            clearInterval(this.timer);
-	        }
-	    }, {
-	        key: 'resetCount',
-	        value: function resetCount() {
-	            this.setState({ time: 0 });
+	        key: 'minusCount',
+	        value: function minusCount() {
+	            this.setState({
+	                counter: this.state.counter - 1
+	            });
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var _this2 = this;
 
 	            return _react2.default.createElement(
 	                'div',
 	                null,
 	                _react2.default.createElement(
+	                    'button',
+	                    { onClick: function onClick() {
+	                            return _this2.plusCount();
+	                        } },
+	                    '+'
+	                ),
+	                _react2.default.createElement(
 	                    'h1',
 	                    null,
-	                    'Counter :  ',
-	                    this.state.time,
-	                    ' sec.'
+	                    this.state.counter
 	                ),
 	                _react2.default.createElement(
 	                    'button',
-	                    { onClick: this.resetCount },
-	                    'Reset'
-	                ),
-	                _react2.default.createElement(
-	                    'button',
-	                    { onClick: this.startCount },
-	                    'Start'
-	                ),
-	                _react2.default.createElement(
-	                    'button',
-	                    { onClick: this.stopCount },
-	                    'Stop'
+	                    { onClick: function onClick() {
+	                            return _this2.minusCount();
+	                        } },
+	                    '-'
 	                )
 	            );
 	        }

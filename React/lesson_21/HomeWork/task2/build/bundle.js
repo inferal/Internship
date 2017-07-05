@@ -63,15 +63,14 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Class Work
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Home Work
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * ### Задача 2
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * ### Задача 1
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Модифицируйте код предыдущей задачи.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Добавьте на странцу три кнопки:
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * сбросить счет (reset), start и stop,
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * которые предоставя пользователю останавлтвать/возобновлять работу таймера
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * и сбрасывать отсчитанное время.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Создайте страницу-калькулятор.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * На странице должно быть 4 кнопки(по кнопке на математическую операцию: сложение, вычитание, умножение, деление),
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * 2 поля ввода и элемент для отображения результата.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Сделайте так, чтобы в поля ввода разрешалось вводить только цифры.
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
 	var MyApp = function (_Component) {
@@ -82,39 +81,91 @@
 
 	        var _this = _possibleConstructorReturn(this, (MyApp.__proto__ || Object.getPrototypeOf(MyApp)).call(this, props));
 
-	        _this.state = { time: 0 };
-	        _this.stopCount = _this.stopCount.bind(_this);
-	        _this.startCount = _this.startCount.bind(_this);
-	        _this.resetCount = _this.resetCount.bind(_this);
+	        _this.state = {
+	            first: "",
+	            second: "",
+	            result: ""
+	        };
 
+	        _this.firstCount = _this.firstCount.bind(_this);
+	        _this.secondCount = _this.secondCount.bind(_this);
+
+	        _this.plusCount = _this.plusCount.bind(_this);
+	        _this.minusCount = _this.minusCount.bind(_this);
+	        _this.multiplyCount = _this.multiplyCount.bind(_this);
+	        _this.divideCount = _this.divideCount.bind(_this);
 	        return _this;
 	    }
 
 	    _createClass(MyApp, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            this.timer = setInterval(this.tick.bind(this), 1000);
+	        key: 'firstCount',
+	        value: function firstCount(event) {
+	            var re = /^[0-9\b]+$/;
+	            if (event.target.value === "" || re.test(event.target.value)) {
+	                this.setState({
+	                    first: event.target.value
+	                });
+	            } else {
+	                alert("Введите число");
+	            }
 	        }
 	    }, {
-	        key: 'tick',
-	        value: function tick() {
-	            this.setState({ time: this.state.time + 1 });
+	        key: 'secondCount',
+	        value: function secondCount(event) {
+	            var re = /^[0-9\b]+$/;
+	            if (event.target.value === "" || re.test(event.target.value)) {
+	                this.setState({
+	                    second: event.target.value
+	                });
+	            } else {
+	                alert("Введите число");
+	            }
 	        }
 	    }, {
-	        key: 'startCount',
-	        value: function startCount() {
-	            clearInterval(this.timer);
-	            this.timer = setInterval(this.tick.bind(this), 1000);
+	        key: 'plusCount',
+	        value: function plusCount() {
+	            if (!!this.state.first === false || !!this.state.second === false) {
+	                alert("Одно из полей пустое");
+	            } else {
+	                this.setState({ result: +this.state.first + +this.state.second });
+	                this.setState({ first: this.state.first = "" });
+	                this.setState({ second: this.state.second = "" });
+	            }
 	        }
 	    }, {
-	        key: 'stopCount',
-	        value: function stopCount() {
-	            clearInterval(this.timer);
+	        key: 'minusCount',
+	        value: function minusCount() {
+	            if (!!this.state.first === false || !!this.state.second === false) {
+	                alert("Одно из полей пустое");
+	            } else {
+	                this.setState({ result: this.state.first - this.state.second });
+	                this.setState({ first: this.state.first = "" });
+	                this.setState({ second: this.state.second = "" });
+	            }
 	        }
 	    }, {
-	        key: 'resetCount',
-	        value: function resetCount() {
-	            this.setState({ time: 0 });
+	        key: 'multiplyCount',
+	        value: function multiplyCount() {
+	            if (!!this.state.first === false || !!this.state.second === false) {
+	                alert("Одно из полей пустое");
+	            } else {
+	                this.setState({ result: this.state.first * this.state.second });
+	                this.setState({ first: this.state.first = "" });
+	                this.setState({ second: this.state.second = "" });
+	            }
+	        }
+	    }, {
+	        key: 'divideCount',
+	        value: function divideCount() {
+	            if (!!this.state.second === 0) {
+	                alert("Делить на ноль нельзя");
+	                this.setState({ first: this.state.first = "" });
+	                this.setState({ second: this.state.second = "" });
+	            } else {
+	                this.setState({ result: this.state.first / this.state.second });
+	                this.setState({ first: this.state.first = "" });
+	                this.setState({ second: this.state.second = "" });
+	            }
 	        }
 	    }, {
 	        key: 'render',
@@ -126,24 +177,54 @@
 	                _react2.default.createElement(
 	                    'h1',
 	                    null,
-	                    'Counter :  ',
-	                    this.state.time,
-	                    ' sec.'
+	                    '\u041A\u0430\u043B\u044C\u043A\u0443\u043B\u044F\u0442\u043E\u0440'
 	                ),
 	                _react2.default.createElement(
-	                    'button',
-	                    { onClick: this.resetCount },
-	                    'Reset'
+	                    'div',
+	                    null,
+	                    _react2.default.createElement('input', {
+	                        type: 'text',
+	                        placeholder: '\u041F\u0435\u0440\u0432\u043E\u0435 \u0447\u0438\u0441\u043B\u043E',
+	                        value: this.state.first,
+	                        onChange: this.firstCount
+	                    }),
+	                    _react2.default.createElement('input', {
+	                        type: 'text',
+	                        placeholder: '\u0412\u0442\u043E\u0440\u043E\u0435 \u0447\u0438\u0441\u043B\u043E',
+	                        value: this.state.second,
+	                        onChange: this.secondCount
+	                    })
+	                ),
+	                _react2.default.createElement('br', null),
+	                _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    _react2.default.createElement(
+	                        'button',
+	                        { onClick: this.plusCount },
+	                        '+'
+	                    ),
+	                    _react2.default.createElement(
+	                        'button',
+	                        { onClick: this.minusCount },
+	                        '-'
+	                    ),
+	                    _react2.default.createElement(
+	                        'button',
+	                        { onClick: this.multiplyCount },
+	                        '*'
+	                    ),
+	                    _react2.default.createElement(
+	                        'button',
+	                        { onClick: this.divideCount },
+	                        '/'
+	                    )
 	                ),
 	                _react2.default.createElement(
-	                    'button',
-	                    { onClick: this.startCount },
-	                    'Start'
-	                ),
-	                _react2.default.createElement(
-	                    'button',
-	                    { onClick: this.stopCount },
-	                    'Stop'
+	                    'h1',
+	                    null,
+	                    '\u0420\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442: ',
+	                    this.state.result
 	                )
 	            );
 	        }
