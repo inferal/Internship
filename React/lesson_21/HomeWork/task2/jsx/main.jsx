@@ -1,7 +1,7 @@
 /*
  * Home Work
  *
- * ### Задача 1
+ * ### Задача 2
  *
  * Создайте страницу-калькулятор.
  * На странице должно быть 4 кнопки(по кнопке на математическую операцию: сложение, вычитание, умножение, деление),
@@ -87,7 +87,7 @@ class MyApp extends Component {
     }
 
     divideCount(){
-        if (!!this.state.second === 0){
+        if (!!this.state.second === "0"){
             alert("Делить на ноль нельзя");
             this.setState({ first: (this.state.first = "") });
             this.setState({ second: (this.state.second = "") });
