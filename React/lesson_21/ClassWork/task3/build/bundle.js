@@ -82,23 +82,45 @@
 
 	        var _this = _possibleConstructorReturn(this, (MyApp.__proto__ || Object.getPrototypeOf(MyApp)).call(this, props));
 
-	        _this.state = { counter: 1 };
-	        _this.count = _this.count.bind(_this);
+	        _this.state = { time: 0 };
+	        _this.stopCount = _this.stopCount.bind(_this);
+	        _this.startCount = _this.startCount.bind(_this);
+	        _this.resetCount = _this.resetCount.bind(_this);
 
 	        return _this;
 	    }
 
 	    _createClass(MyApp, [{
-	        key: 'count',
-	        value: function count() {
-	            this.setState({ counter: this.state.counter + 1 });
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            this.timer = setInterval(this.tick.bind(this), 1000);
+	        }
+	    }, {
+	        key: 'tick',
+	        value: function tick() {
+	            this.setState({ time: this.state.time + 1 });
+	        }
+	    }, {
+	        key: 'startCount',
+	        value: function startCount() {
+	            clearInterval(this.timer);
+	            this.timer = setInterval(this.tick.bind(this), 1000);
+	        }
+	    }, {
+	        key: 'stopCount',
+	        value: function stopCount() {
+	            clearInterval(this.timer);
+	        }
+	    }, {
+	        key: 'resetCount',
+	        value: function resetCount() {
+	            this.setState({ time: 0 });
+	            this.timer = setInterval(this.tick.bind(this), 500);
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            if (!this.timer) {
-	                this.timer = setInterval(this.count, 1000);
-	            }
+
 	            return _react2.default.createElement(
 	                'div',
 	                null,
@@ -106,51 +128,29 @@
 	                    'h1',
 	                    null,
 	                    'Counter :  ',
-	                    this.state.counter,
+	                    this.state.time,
 	                    ' sec.'
-	                )
-	            );
-	        }
-	    }]);
-
-	    return MyApp;
-	}(_react.Component);
-
-	var MyButton = function (_Component2) {
-	    _inherits(MyButton, _Component2);
-
-	    function MyButton() {
-	        _classCallCheck(this, MyButton);
-
-	        return _possibleConstructorReturn(this, (MyButton.__proto__ || Object.getPrototypeOf(MyButton)).apply(this, arguments));
-	    }
-
-	    _createClass(MyButton, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                null,
+	                ),
 	                _react2.default.createElement(
 	                    'button',
-	                    null,
+	                    { onClick: this.resetCount },
 	                    'Reset'
 	                ),
 	                _react2.default.createElement(
 	                    'button',
-	                    null,
+	                    { onClick: this.startCount },
 	                    'Start'
 	                ),
 	                _react2.default.createElement(
 	                    'button',
-	                    null,
+	                    { onClick: this.stopCount },
 	                    'Stop'
 	                )
 	            );
 	        }
 	    }]);
 
-	    return MyButton;
+	    return MyApp;
 	}(_react.Component);
 
 	_reactDom2.default.render(_react2.default.createElement(MyApp, null), document.getElementById("example"));

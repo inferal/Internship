@@ -19,39 +19,46 @@ class MyApp extends Component {
 
     constructor(props){
         super(props);
-        this.state = {counter : 1};
-        this.count = this.count.bind(this);
+        this.state = {time : 0};
+        this.stopCount = this.stopCount.bind(this);
+        this.startCount = this.startCount.bind(this);
+        this.resetCount = this.resetCount.bind(this);
 
     }
+    componentDidMount(){
+        this.timer = setInterval(this.tick.bind(this), 1000);
+    }
 
-    count(){
-        this.setState({counter: this.state.counter + 1})
+    tick(){
+        this.setState({time: this.state.time + 1})
+    }
+
+    startCount(){
+        clearInterval(this.timer);
+        this.timer = setInterval(this.tick.bind(this), 1000);
+    }
+
+    stopCount(){
+        clearInterval(this.timer);
+    }
+
+    resetCount(){
+        this.setState({ time: 0 });
     }
 
     render() {
-        if(!this.timer){
-            this.timer = setInterval(this.count, 1000);
-        }
+
         return (
             <div>
-                <h1>Counter :  { this.state.counter } sec.</h1>
-            </div>
-        );
-    }
-}
-
-class MyButton extends Component{
-
-    render(){
-        return(
-            <div>
-                <button>Reset</button>
-                <button>Start</button>
-                <button>Stop</button>
+                <h1>Counter :  { this.state.time } sec.</h1>
+                <button onClick={this.resetCount}>Reset</button>
+                <button onClick={this.startCount}>Start</button>
+                <button onClick={this.stopCount}>Stop</button>
             </div>
         )
     }
 }
+
 
 ReactDOM.render(
     <MyApp/>, document.getElementById("example"));
