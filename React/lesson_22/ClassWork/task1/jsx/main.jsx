@@ -3,38 +3,40 @@
  *
  * ### Задача 1
  *
- * Создайте React компонент, отображающий кнопку и элемент div.
- * Добавьте на страницу тег style с двумя классами – black и red, задающими соответствующий background-color элементу.
- * Реализуйте переключение этих классов для элемента div при клике по кнопке.
+ * Дано следующий объект:
+ * let options = {
+ * title: "Menu",
+ * width: 100,
+ * height: 200
+ * };
+ * Используя деструктуризацию, присвойте свойства объекта options переменным с соответствующими именами и выведите их на экран.
  */
 
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+let options = {
+    title: "Menu",
+    width: 100,
+    height: 200
+};
+
+let {title: tit,
+    width: wid,
+    height: hei
+} = options;
 
 class MyApp extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {myStyle: props.myStyle || true};
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-
-    handleClick(){
-        if(this.state.myStyle === true){
-            this.setState({myStyle: false})
-        }else{
-            this.setState({myStyle: true});
-        }
-    }
 
 
     render() {
         return (
-            <div className={this.state.myStyle === true ? "red" : "blue"}>
-                <button onClick={this.handleClick}>Submit Style</button>
+            <div>
+                <h1>Title {tit}</h1>
+                <h3>Width {wid}</h3>
+                <h3>Height {hei}</h3>
             </div>
         );
     }
