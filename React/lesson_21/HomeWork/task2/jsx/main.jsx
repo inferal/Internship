@@ -89,6 +89,7 @@ class MyApp extends Component {
     divideCount(){
         if (!!this.state.second === "0"){
             alert("Делить на ноль нельзя");
+            this.setState({ result: this.state.first / this.state.second });
             this.setState({ first: (this.state.first = "") });
             this.setState({ second: (this.state.second = "") });
         }else {
