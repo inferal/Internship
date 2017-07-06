@@ -92,7 +92,7 @@
 	    return Summa;
 	}(_react2.default.Component);
 
-	var element = _react2.default.createElement(Summa, { one: '25', two: '22' });
+	var element = _react2.default.createElement(Summa, { one: 22, two: 23 });
 
 	_reactDom2.default.render(element, document.getElementById('example'));
 

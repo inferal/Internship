@@ -17,7 +17,7 @@ class Summa extends React.Component {
     }
 }
 
-const element = <Summa one="25" two="22"/>;
+const element = <Summa one={22} two={23}/>;
 
 ReactDOM.render(
     element,
