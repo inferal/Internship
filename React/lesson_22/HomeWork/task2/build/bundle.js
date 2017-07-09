@@ -101,10 +101,16 @@
 	    return Person;
 	}();
 
+	var person = new Person();
+	console.log(person.sayHi());
+
 	var User = function (_Person) {
 	    _inherits(User, _Person);
 
-	    function User(firstName, lastName, age, gender, signUpDate, id) {
+	    function User(firstName, lastName, age, gender) {
+	        var signUpDate = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
+	        var id = arguments[5];
+
 	        _classCallCheck(this, User);
 
 	        var _this = _possibleConstructorReturn(this, (User.__proto__ || Object.getPrototypeOf(User)).call(this, firstName, lastName, age, gender));
@@ -117,10 +123,9 @@
 	    return User;
 	}(Person);
 
-	var users = [user = new User('Yurik', 'Pop', 15, 'Male', Date.now(), 1), user = new User('Vas', 'Poli', 20, 'Male', Date.now(), 2), user = new User('Vik', 'Rok', 35, 'Male', Date.now(), 3)];
+	var user1, user2, user3;
 
-	var person = new Person();
-	console.log(person.sayHi());
+	var users = [user1 = new User('Yurik', 'Pop', 15, 'Male', Date.now(), 1), user2 = new User('Vas', 'Poli', 20, 'Male', Date.now(), 2), user3 = new User('Vik', 'Rok', 35, 'Male', Date.now(), 3)];
 
 	console.log(users);
 

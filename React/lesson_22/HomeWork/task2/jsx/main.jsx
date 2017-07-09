@@ -32,22 +32,24 @@ class Person{
     }
 }
 
+const person = new Person();
+console.log(person.sayHi());
+
 class User extends Person{
-    constructor(firstName, lastName, age, gender, signUpDate, id){
+    constructor(firstName, lastName, age, gender, signUpDate = 0, id){
         super(firstName, lastName, age, gender);
         this.signUpDate = signUpDate;
         this.id = id;
     }
 }
 
+var user1, user2, user3;
+
 const users = [
-    user= new User('Yurik', 'Pop', 15, 'Male', Date.now(), 1),
-    user= new User('Vas', 'Poli', 20,'Male', Date.now(), 2),
-    user= new User('Vik', 'Rok', 35, 'Male', Date.now(), 3)
+    user1 = new User('Yurik', 'Pop', 15, 'Male', Date.now(), 1),
+    user2 = new User('Vas', 'Poli', 20, 'Male', Date.now(), 2),
+    user3 = new User('Vik', 'Rok', 35, 'Male', Date.now(), 3)
 
 ];
-
-const person = new Person();
-console.log(person.sayHi());
 
 console.log(users);
