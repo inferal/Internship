@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "build/";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -22079,125 +22079,6 @@
 /* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _buttonUser = __webpack_require__(185);
-
-	var _buttonUser2 = _interopRequireDefault(_buttonUser);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Home Work
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * ### Задача 1
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Создайте приложение usersList, которое состоит из 2х компонентов: с
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * писок элементов массива users в виде таблицы и
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * кнопка для добавления новых пользователей в список.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Для сборки приложения используйте Webpack.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-	var App = function (_Component) {
-	    _inherits(App, _Component);
-
-	    function App(props) {
-	        _classCallCheck(this, App);
-
-	        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
-
-	        _this.state = {
-	            users: [{ firstName: "Yurik", lastName: "Pop", id: 1 }, { firstName: "Vasi", lastName: "Popi", id: 2 }]
-	        };
-	        return _this;
-	    }
-
-	    _createClass(App, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(
-	                    'table',
-	                    null,
-	                    _react2.default.createElement(
-	                        'thead',
-	                        null,
-	                        _react2.default.createElement(
-	                            'tr',
-	                            null,
-	                            _react2.default.createElement(
-	                                'th',
-	                                null,
-	                                'First Name'
-	                            ),
-	                            _react2.default.createElement(
-	                                'th',
-	                                null,
-	                                'Last Name'
-	                            ),
-	                            _react2.default.createElement(
-	                                'th',
-	                                null,
-	                                'ID'
-	                            )
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'tbody',
-	                        null,
-	                        this.state.users.map(function (el, i) {
-	                            return _react2.default.createElement(
-	                                'tr',
-	                                { key: i },
-	                                _react2.default.createElement(
-	                                    'td',
-	                                    null,
-	                                    el.firstName
-	                                ),
-	                                _react2.default.createElement(
-	                                    'td',
-	                                    null,
-	                                    el.lastName
-	                                ),
-	                                _react2.default.createElement(
-	                                    'td',
-	                                    null,
-	                                    el.id
-	                                )
-	                            );
-	                        })
-	                    )
-	                ),
-	                _react2.default.createElement(_buttonUser2.default, null)
-	            );
-	        }
-	    }]);
-
-	    return App;
-	}(_react.Component);
-
-	exports.default = App;
-
-/***/ }),
-/* 185 */
-/***/ (function(module, exports, __webpack_require__) {
-
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
@@ -22218,26 +22099,82 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var ButtonUser = function (_Component) {
-	    _inherits(ButtonUser, _Component);
+	var App = function (_Component) {
+	    _inherits(App, _Component);
 
-	    function ButtonUser() {
-	        _classCallCheck(this, ButtonUser);
+	    function App(props) {
+	        _classCallCheck(this, App);
 
-	        return _possibleConstructorReturn(this, (ButtonUser.__proto__ || Object.getPrototypeOf(ButtonUser)).apply(this, arguments));
+	        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+	        _this.state = {
+	            users: [{ firstName: "Yurik", lastName: "Pop", id: 1 }, { firstName: "Vasi", lastName: "Popi", id: 2 }]
+	        };
+	        return _this;
 	    }
 
-	    _createClass(ButtonUser, [{
+	    _createClass(App, [{
 	        key: "render",
 	        value: function render() {
-	            return _react2.default.createElement("input", { type: "button", value: "New Users" });
+	            return _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                    "table",
+	                    null,
+	                    _react2.default.createElement(
+	                        "thead",
+	                        null,
+	                        _react2.default.createElement(
+	                            "tr",
+	                            null,
+	                            _react2.default.createElement(
+	                                "th",
+	                                null,
+	                                "First Name"
+	                            ),
+	                            _react2.default.createElement(
+	                                "th",
+	                                null,
+	                                "Last Name"
+	                            ),
+	                            _react2.default.createElement(
+	                                "th",
+	                                null,
+	                                "ID"
+	                            )
+	                        )
+	                    ),
+	                    this.state.users.map(function (el, i) {
+	                        return _react2.default.createElement(
+	                            "tr",
+	                            { key: i },
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                el.firstName
+	                            ),
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                el.lastName
+	                            ),
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                el.id
+	                            )
+	                        );
+	                    })
+	                )
+	            );
 	        }
 	    }]);
 
-	    return ButtonUser;
+	    return App;
 	}(_react.Component);
 
-	exports.default = ButtonUser;
+	exports.default = App;
 
 /***/ })
 /******/ ]);
