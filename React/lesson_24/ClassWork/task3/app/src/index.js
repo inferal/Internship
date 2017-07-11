@@ -13,7 +13,7 @@
 
 import React, { Component } from 'react';
 
-import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom';
+import { HashRouter, Route, Link, Switch, Redirect } from 'react-router-dom';
 
 
 import Home  from '../views/home.js';
@@ -27,29 +27,29 @@ class App extends Component{
 
     render(){
         return(
-            <Router>
-                <div>
-                    <h1>React Routing</h1>
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <l1><Link to="/view1">View 1</Link></l1>
-                        <l1><Link to="/view2">View 2</Link></l1>
-                    </ul>
+            <HashRouter>
+                    <div>
+                        <h1>React Routing</h1>
+                        <ul>
+                            <li><Link to="/">Home</Link></li>
+                            <l1><Link to="/view1">View 1</Link></l1>
+                            <l1><Link to="/view2">View 2</Link></l1>
+                        </ul>
 
 
-                <hr/>
+                    <hr/>
 
-                <Switch>
-                    <Route exact path="/" component={ Home }/>
-                    <Route path="/view1" component={View1}/>
-                    <Route path="/view2" component={View2}/>
+                    <Switch>
+                        <Route exact path="/" component={Home}/>
+                        <Route path="/view1" component={View1}/>
+                        <Route path="/view2" component={View2}/>
 
-                    <Route render={function () {
-                        return <Redirect to="/" component={Home}/>
-                    }}/>
-                </Switch>
-                </div>
-            </Router>
+                        /<Route render={function () {
+                            return <Redirect to="/" component={Home}/>
+                        }}/>
+                    </Switch>
+                    </div>
+            </HashRouter>
         )
     }
 }

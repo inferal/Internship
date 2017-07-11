@@ -22134,7 +22134,7 @@
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
-	                _reactRouterDom.BrowserRouter,
+	                _reactRouterDom.HashRouter,
 	                null,
 	                _react2.default.createElement(
 	                    'div',
@@ -22182,6 +22182,7 @@
 	                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _home2.default }),
 	                        _react2.default.createElement(_reactRouterDom.Route, { path: '/view1', component: _view2.default }),
 	                        _react2.default.createElement(_reactRouterDom.Route, { path: '/view2', component: _view4.default }),
+	                        '/',
 	                        _react2.default.createElement(_reactRouterDom.Route, { render: function render() {
 	                                return _react2.default.createElement(_reactRouterDom.Redirect, { to: '/', component: _home2.default });
 	                            } })
