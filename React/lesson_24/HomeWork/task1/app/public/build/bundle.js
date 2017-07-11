@@ -22097,7 +22097,7 @@
 
 	var _listView2 = _interopRequireDefault(_listView);
 
-	var _tableView = __webpack_require__(226);
+	var _tableView = __webpack_require__(227);
 
 	var _tableView2 = _interopRequireDefault(_tableView);
 
@@ -25979,6 +25979,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _usersData = __webpack_require__(226);
+
+	var _usersData2 = _interopRequireDefault(_usersData);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -25987,33 +25991,59 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var View1 = function (_Component) {
-	    _inherits(View1, _Component);
+	var listView = function (_Component) {
+	    _inherits(listView, _Component);
 
-	    function View1() {
-	        _classCallCheck(this, View1);
+	    function listView() {
+	        _classCallCheck(this, listView);
 
-	        return _possibleConstructorReturn(this, (View1.__proto__ || Object.getPrototypeOf(View1)).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (listView.__proto__ || Object.getPrototypeOf(listView)).apply(this, arguments));
 	    }
 
-	    _createClass(View1, [{
+	    _createClass(listView, [{
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
-	                'h1',
+	                'div',
 	                null,
-	                '\u042D\u0442\u043E \u0442\u0435\u043A\u0441\u0442 View1'
+	                _usersData2.default.map(function (el, i) {
+	                    return _react2.default.createElement(
+	                        'ul',
+	                        { key: i },
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            el.first_name,
+	                            ' ',
+	                            el.last_name
+	                        ),
+	                        _react2.default.createElement('br', null)
+	                    );
+	                })
 	            );
 	        }
 	    }]);
 
-	    return View1;
+	    return listView;
 	}(_react.Component);
 
-	exports.default = View1;
+	exports.default = listView;
 
 /***/ }),
 /* 226 */
+/***/ (function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	       value: true
+	});
+	var users = [{ first_name: "Matthew", last_name: "Phillips", email: "mphillips0@myspace.com", gender: "Male", ip_address: "14.241.172.154", id: 23468 }, { first_name: "Larry", last_name: "Weaver", email: "lweaver1@slideshare.net", gender: "Male", ip_address: "126.139.9.128", id: 89078 }, { first_name: "Barbara", last_name: "Tucker", email: "btucker2@cbc.ca", gender: "Female", ip_address: "92.195.229.16", id: 56435 }, { first_name: "Jonathan", last_name: "Cook", email: "jcook3@fc2.com", gender: "Male", ip_address: "187.79.225.71", id: 78908 }, { first_name: "Jean", last_name: "Flores", email: "jflores4@last.fm", gender: "Female", ip_address: "222.197.158.249", id: 67653 }, { first_name: "Kimberly", last_name: "Nelson", email: "knelson5@nifty.com", gender: "Female", ip_address: "111.174.89.57", id: 83425 }, { first_name: "Willie", last_name: "Banks", email: "wbanks6@abc.net.au", gender: "Male", ip_address: "97.0.19.154", id: 99873 }, { first_name: "Michael", last_name: "King", email: "mking7@w3.org", gender: "Male", ip_address: "149.114.62.6", id: 34239 }];
+
+	exports.default = users;
+
+/***/ }),
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26028,6 +26058,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _usersData = __webpack_require__(226);
+
+	var _usersData2 = _interopRequireDefault(_usersData);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26036,30 +26070,81 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var View2 = function (_Component) {
-	    _inherits(View2, _Component);
+	var tableView = function (_Component) {
+	    _inherits(tableView, _Component);
 
-	    function View2() {
-	        _classCallCheck(this, View2);
+	    function tableView() {
+	        _classCallCheck(this, tableView);
 
-	        return _possibleConstructorReturn(this, (View2.__proto__ || Object.getPrototypeOf(View2)).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (tableView.__proto__ || Object.getPrototypeOf(tableView)).apply(this, arguments));
 	    }
 
-	    _createClass(View2, [{
+	    _createClass(tableView, [{
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
-	                'h1',
+	                'div',
 	                null,
-	                '\u042D\u0442\u043E \u0442\u0435\u043A\u0441\u0442 View2'
+	                _react2.default.createElement(
+	                    'table',
+	                    null,
+	                    _react2.default.createElement(
+	                        'thead',
+	                        null,
+	                        _react2.default.createElement(
+	                            'tr',
+	                            null,
+	                            _react2.default.createElement(
+	                                'th',
+	                                null,
+	                                'First Name'
+	                            ),
+	                            _react2.default.createElement(
+	                                'th',
+	                                null,
+	                                'Last Name'
+	                            ),
+	                            _react2.default.createElement(
+	                                'th',
+	                                null,
+	                                'Gender'
+	                            )
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'tbody',
+	                        null,
+	                        _usersData2.default.map(function (el, i) {
+	                            return _react2.default.createElement(
+	                                'tr',
+	                                { key: i },
+	                                _react2.default.createElement(
+	                                    'td',
+	                                    null,
+	                                    el.first_name
+	                                ),
+	                                _react2.default.createElement(
+	                                    'td',
+	                                    null,
+	                                    el.last_name
+	                                ),
+	                                _react2.default.createElement(
+	                                    'td',
+	                                    null,
+	                                    el.gender
+	                                )
+	                            );
+	                        })
+	                    )
+	                )
 	            );
 	        }
 	    }]);
 
-	    return View2;
+	    return tableView;
 	}(_react.Component);
 
-	exports.default = View2;
+	exports.default = tableView;
 
 /***/ })
 /******/ ]);

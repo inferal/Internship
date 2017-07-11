@@ -1,13 +1,30 @@
 import React, { Component } from 'react';
 
+import users from '../src/usersData.js';
 
-class View1 extends Component{
+
+class listView extends Component{
+
+
 
     render(){
         return(
-            <h1>Это текст View1</h1>
+            <div>
+                {
+                    users.map(function (el, i) {
+                        return(
+                            <ul key={i}>
+                                <li>{el.first_name} {el.last_name}</li><br/>
+                            </ul>
+
+                        )
+                    })
+                }
+
+
+            </div>
         )
     }
 }
 
-export default View1;
+export default listView;
