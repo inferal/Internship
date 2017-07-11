@@ -21329,7 +21329,7 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _app = require('./app.js');
+var _app = require('./index.js');
 
 var _app2 = _interopRequireDefault(_app);
 
