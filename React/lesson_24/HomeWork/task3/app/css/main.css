@@ -1,0 +1,30 @@
+li {
+    float: left;
+    margin-left: 20px;
+    list-style-type: none;
+    padding-left: 10px;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+th{
+    height: 50px;
+}
+
+table, th, td {
+    border: 1px solid black;
+    text-align: center;
+}
+
+.animate {
+    opacity: 0;
+    animation: fade 0.9s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
