@@ -2127,7 +2127,7 @@
 	 * - `traverseAllChildren(this.props.leftPanelChildren, ...)`
 	 *
 	 * The `traverseContext` is an optional argument that is passed through the
-	 * entire traversal. It can be used to store accumulations or anything else that
+	 * entire traversal. It can be used to stores accumulations or anything else that
 	 * the callback might find relevant.
 	 *
 	 * @param {?*} children Children tree object.

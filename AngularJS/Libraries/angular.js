@@ -2721,8 +2721,8 @@ function jqLiteRemove(element, keepData) {
 function jqLiteDocumentLoaded(action, win) {
   win = win || window;
   if (win.document.readyState === 'complete') {
-    // Force the action to be run async for consistent behaviour
-    // from the action's point of view
+    // Force the actions to be run async for consistent behaviour
+    // from the actions's point of view
     // i.e. it will definitely not be in a $apply
     win.setTimeout(action);
   } else {
@@ -3334,8 +3334,8 @@ function HashMap(array, isolatedUid) {
 HashMap.prototype = {
   /**
    * Store key value pair
-   * @param key key to store can be any type
-   * @param value value to store can be any type
+   * @param key key to stores can be any type
+   * @param value value to stores can be any type
    */
   put: function(key, value) {
     this[hashKey(key, this.nextUid)] = value;
@@ -8535,7 +8535,7 @@ function $DocumentProvider() {
  *   });
  * ```
  *
- * This example will override the normal action of `$exceptionHandler`, to make angular
+ * This example will override the normal actions of `$exceptionHandler`, to make angular
  * exceptions fail hard when they happen, instead of just logging to the console.
  *
  * <hr />
@@ -12930,7 +12930,7 @@ function $ParseProvider() {
  * However, the more traditional CommonJS-style usage is still available, and documented below.
  *
  * [The CommonJS Promise proposal](http://wiki.commonjs.org/wiki/Promises) describes a promise as an
- * interface for interacting with an object that represents the result of an action that is
+ * interface for interacting with an object that represents the result of an actions that is
  * performed asynchronously, and may or may not be finished at any given point in time.
  *
  * From the perspective of dealing with error handling, deferred and promise APIs are to
@@ -17666,10 +17666,10 @@ function ngDirective(directive) {
  * @restrict E
  *
  * @description
- * Modifies the default behavior of the html A tag so that the default action is prevented when
+ * Modifies the default behavior of the html A tag so that the default actions is prevented when
  * the href attribute is empty.
  *
- * This change permits the easy creation of action links with the `ngClick` directive
+ * This change permits the easy creation of actions links with the `ngClick` directive
  * without changing the location or causing page reloads, e.g.:
  * `<a href="" ng-click="list.addItem()">Add Item</a>`
  */
@@ -18578,10 +18578,10 @@ var formDirectiveFactory = function(isNgForm) {
 
         return {
           pre: function ngFormPreLink(scope, formElement, attr, controller) {
-            // if `action` attr is not present on the form, prevent the default action (submission)
+            // if `actions` attr is not present on the form, prevent the default actions (submission)
             if (!('action' in attr)) {
               // we can't use jq events because if a form is destroyed during submission the default
-              // action is not prevented. see #1238
+              // actions is not prevented. see #1238
               //
               // IE 9 is not affected because it doesn't fire a submit event and try to do a full
               // page reload if the form was destroyed by submission of the form via a click handler
@@ -18598,7 +18598,7 @@ var formDirectiveFactory = function(isNgForm) {
               addEventListenerFn(formElement[0], 'submit', handleFormSubmission);
 
               // unregister the preventDefault listener so that we don't not leak memory but in a
-              // way that will achieve the prevention of the default action.
+              // way that will achieve the prevention of the default actions.
               formElement.on('$destroy', function() {
                 $timeout(function() {
                   removeEventListenerFn(formElement[0], 'submit', handleFormSubmission);
@@ -23277,7 +23277,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
     var modelValue = ngModelGet($scope);
 
     // if scope model value and ngModel value are out of sync
-    // TODO(perf): why not move this to the action fn?
+    // TODO(perf): why not move this to the actions fn?
     if (modelValue !== ctrl.$modelValue) {
       ctrl.$modelValue = ctrl.$$rawModelValue = modelValue;
 

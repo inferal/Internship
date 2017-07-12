@@ -5190,7 +5190,7 @@ var forEachAccumulated = require('./forEachAccumulated');
 var invariant = require('fbjs/lib/invariant');
 
 /**
- * Internal store for event listeners
+ * Internal stores for event listeners
  */
 var listenerBank = {};
 
@@ -5295,7 +5295,7 @@ var EventPluginHub = {
    *
    * @param {object} inst The instance, which is the source of events.
    * @param {string} registrationName Name of listener (e.g. `onClick`).
-   * @param {function} listener The callback to store.
+   * @param {function} listener The callback to stores.
    */
   putListener: function (inst, registrationName, listener) {
     !(typeof listener === 'function') ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Expected %s listener to be a function, instead got type %s', registrationName, typeof listener) : _prodInvariant('94', registrationName, typeof listener) : void 0;
@@ -8097,7 +8097,7 @@ var ReactCompositeComponent = {
    * Lazily allocates the refs object and stores `component` as `ref`.
    *
    * @param {string} ref Reference name.
-   * @param {component} component Component to store as `ref`.
+   * @param {component} component Component to stores as `ref`.
    * @final
    * @private
    */
@@ -11909,7 +11909,7 @@ function findParent(inst) {
   return ReactDOMComponentTree.getClosestInstanceFromNode(container);
 }
 
-// Used to store ancestor hierarchy in top level callback
+// Used to stores ancestor hierarchy in top level callback
 function TopLevelCallbackBookKeeping(topLevelType, nativeEvent) {
   this.topLevelType = topLevelType;
   this.nativeEvent = nativeEvent;
@@ -12691,7 +12691,7 @@ function getTopLevelWrapperInContainer(container) {
 }
 
 /**
- * Temporary (?) hack so that we can store all top-level pending updates on
+ * Temporary (?) hack so that we can stores all top-level pending updates on
  * composites instead of having to worry about different types of components
  * here.
  */
@@ -18538,7 +18538,7 @@ function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext)
  * - `traverseAllChildren(this.props.leftPanelChildren, ...)`
  *
  * The `traverseContext` is an optional argument that is passed through the
- * entire traversal. It can be used to store accumulations or anything else that
+ * entire traversal. It can be used to stores accumulations or anything else that
  * the callback might find relevant.
  *
  * @param {?*} children Children tree object.
@@ -20106,7 +20106,7 @@ var ReactElement = function (type, key, ref, self, source, owner, props) {
 
   if (process.env.NODE_ENV !== 'production') {
     // The validation flag is currently mutative. We put it on
-    // an external backing store so that we can freeze the whole object.
+    // an external backing stores so that we can freeze the whole object.
     // This can be replaced with a WeakMap once they are implemented in
     // commonly used development environments.
     element._store = {};
@@ -21140,7 +21140,7 @@ function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext)
  * - `traverseAllChildren(this.props.leftPanelChildren, ...)`
  *
  * The `traverseContext` is an optional argument that is passed through the
- * entire traversal. It can be used to store accumulations or anything else that
+ * entire traversal. It can be used to stores accumulations or anything else that
  * the callback might find relevant.
  *
  * @param {?*} children Children tree object.

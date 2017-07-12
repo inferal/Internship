@@ -1972,7 +1972,7 @@
 	 * - `traverseAllChildren(this.props.leftPanelChildren, ...)`
 	 *
 	 * The `traverseContext` is an optional argument that is passed through the
-	 * entire traversal. It can be used to store accumulations or anything else that
+	 * entire traversal. It can be used to stores accumulations or anything else that
 	 * the callback might find relevant.
 	 *
 	 * @param {?*} children Children tree object.
@@ -16407,7 +16407,7 @@
 	   * Lazily allocates the refs object and stores `component` as `ref`.
 	   *
 	   * @param {string} ref Reference name.
-	   * @param {component} component Component to store as `ref`.
+	   * @param {component} component Component to stores as `ref`.
 	   * @final
 	   * @private
 	   */
@@ -21197,7 +21197,7 @@
 	}
 
 	/**
-	 * Temporary (?) hack so that we can store all top-level pending updates on
+	 * Temporary (?) hack so that we can stores all top-level pending updates on
 	 * composites instead of having to worry about different types of components
 	 * here.
 	 */
