@@ -1,10 +1,16 @@
 /*
  * Home Work
  *
- * ### Задача 2
+ * ### Задача 3
  *
- * Модицифицируйте код предыдущей задачи.
- * Добавьте анимацию при переходе по путям, указанным в конфигурации маршрутизации приложения.
+ * Модицифицируйте код предыдущей задачи. Реализуйте следующее:
+ *
+ *  * При клике по каждому элементу списка происходит перенаправление на страницу “/tableView/:id” или “/listView/:id”,
+ *    в зависимости от текущего пути приложения, где id – соответствующее свойтво id элемента списка или таблицы,
+ *    по которому кликнул пользователь
+ *  * На странице, на которую будет происходить перенаправление, должна отображаться инфомация
+ *    об элементе массива users, id которого был передан в поисковой строке.
+ *    Реализуйте передачу этой информации через query параметры.
  */
 
 
@@ -17,6 +23,7 @@ import { HashRouter, Route, Link, Switch, Redirect } from 'react-router-dom';
 
 import listView from '../views/listView.js';
 import tableView from '../views/tableView.js';
+import Info from './info.js'
 
 
 class App extends Component{
@@ -37,8 +44,10 @@ class App extends Component{
                     <hr/>
 
                     <Switch>
-                        <Route path="/listView" component={listView}/>
-                        <Route path="/tableView" component={tableView}/>
+                        <Route exact path="/listView" component={listView}/>
+                        <Route path="/listView/:id" component={Info}/>
+                        <Route exact path="/tableView" component={tableView}/>
+                        <Route path="/tableView/:id" component={Info}/>
                     </Switch>
                     </div>
             </HashRouter>

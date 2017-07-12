@@ -22101,6 +22101,10 @@
 
 	var _tableView2 = _interopRequireDefault(_tableView);
 
+	var _info = __webpack_require__(228);
+
+	var _info2 = _interopRequireDefault(_info);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22110,26 +22114,16 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Home Work
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * ### Задача 1
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * ### Задача 3
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Создайте приложение с тремя страницами:
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      * главной страницей, соответстующей React компоненту App, содержащему 2 кнопки (ListView, TableView),
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      реализующие переход по соответственным путям (“/listView”, “tableView”)
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      * страницей, отображающей массив users в виде списка(listView). Для списка используйте свойства элементов
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      массива users first_name и last_name
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      * страницей, отображающей массив users в виде таблицы(tableView). Для 2nf,таблицы используйте свойства
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      элементов массива users first_name, last_name и gender. Массив users для задачи:
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Модицифицируйте код предыдущей задачи. Реализуйте следующее:
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      var users = [
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      {first_name:"Matthew",last_name:"Phillips",email:"mphillips0@myspace.com",gender:"Male",ip_address:"14.241.172.154", id:23468},
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      {first_name:"Larry",last_name:"Weaver",email:"lweaver1@slideshare.net",gender:"Male",ip_address:"126.139.9.128", id:89078},
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      {first_name:"Barbara",last_name:"Tucker",email:"btucker2@cbc.ca",gender:"Female",ip_address:"92.195.229.16", id: 56435},
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      {first_name:"Jonathan",last_name:"Cook",email:"jcook3@fc2.com",gender:"Male",ip_address:"187.79.225.71", id:78908},
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      {first_name:"Jean",last_name:"Flores",email:"jflores4@last.fm",gender:"Female",ip_address:"222.197.158.249, id:67653"},
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      {first_name:"Kimberly",last_name:"Nelson",email:"knelson5@nifty.com",gender:"Female",ip_address:"111.174.89.57", id:83425},
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      {first_name:"Willie",last_name:"Banks",email:"wbanks6@abc.net.au",gender:"Male",ip_address:"97.0.19.154", id:99873},
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      {first_name:"Michael",last_name:"King",email:"mking7@w3.org",gender:"Male",ip_address:"149.114.62.6"}, id: 34239]
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *  * При клике по каждому элементу списка происходит перенаправление на страницу “/tableView/:id” или “/listView/:id”,
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *    в зависимости от текущего пути приложения, где id – соответствующее свойтво id элемента списка или таблицы,
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *    по которому кликнул пользователь
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *  * На странице, на которую будет происходить перенаправление, должна отображаться инфомация
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *    об элементе массива users, id которого был передан в поисковой строке.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *    Реализуйте передачу этой информации через query параметры.
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
 	var App = function (_Component) {
@@ -22189,8 +22183,10 @@
 	                    _react2.default.createElement(
 	                        _reactRouterDom.Switch,
 	                        null,
-	                        _react2.default.createElement(_reactRouterDom.Route, { path: '/listView', component: _listView2.default }),
-	                        _react2.default.createElement(_reactRouterDom.Route, { path: '/tableView', component: _tableView2.default })
+	                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/listView', component: _listView2.default }),
+	                        _react2.default.createElement(_reactRouterDom.Route, { path: '/listView/:id', component: _info2.default }),
+	                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/tableView', component: _tableView2.default }),
+	                        _react2.default.createElement(_reactRouterDom.Route, { path: '/tableView/:id', component: _info2.default })
 	                    )
 	                )
 	            );
@@ -25979,6 +25975,8 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRouterDom = __webpack_require__(185);
+
 	var _usersData = __webpack_require__(226);
 
 	var _usersData2 = _interopRequireDefault(_usersData);
@@ -26013,9 +26011,13 @@
 	                        _react2.default.createElement(
 	                            'li',
 	                            null,
-	                            el.first_name,
-	                            ' ',
-	                            el.last_name
+	                            _react2.default.createElement(
+	                                _reactRouterDom.Link,
+	                                { to: { pathname: '/listView/' + el.id } },
+	                                el.first_name,
+	                                ' ',
+	                                el.last_name
+	                            )
 	                        ),
 	                        _react2.default.createElement('br', null)
 	                    );
@@ -26057,6 +26059,8 @@
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouterDom = __webpack_require__(185);
 
 	var _usersData = __webpack_require__(226);
 
@@ -26119,9 +26123,13 @@
 	                                'tr',
 	                                { key: i },
 	                                _react2.default.createElement(
-	                                    'td',
+	                                    'th',
 	                                    null,
-	                                    el.first_name
+	                                    _react2.default.createElement(
+	                                        _reactRouterDom.Link,
+	                                        { to: { pathname: '/tableView/' + el.id } },
+	                                        el.first_name
+	                                    )
 	                                ),
 	                                _react2.default.createElement(
 	                                    'td',
@@ -26145,6 +26153,68 @@
 	}(_react.Component);
 
 	exports.default = tableView;
+
+/***/ }),
+/* 228 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _usersData = __webpack_require__(226);
+
+	var _usersData2 = _interopRequireDefault(_usersData);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Info = function Info(_ref) {
+	    var match = _ref.match;
+
+	    var person = match.params.id;
+	    var indexUser = void 0;
+	    _usersData2.default.forEach(function (item, i) {
+	        if (item.id == person) {
+	            return indexUser = i;
+	        }
+	    });
+	    return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	            'h1',
+	            null,
+	            'First name: ',
+	            _usersData2.default[indexUser].first_name
+	        ),
+	        _react2.default.createElement(
+	            'h1',
+	            null,
+	            'Last name: ',
+	            _usersData2.default[indexUser].last_name
+	        ),
+	        _react2.default.createElement(
+	            'h1',
+	            null,
+	            'Gender: ',
+	            _usersData2.default[indexUser].gender
+	        ),
+	        _react2.default.createElement(
+	            'h1',
+	            null,
+	            'E-mail: ',
+	            _usersData2.default[indexUser].email
+	        )
+	    );
+	};
+
+	exports.default = Info;
 
 /***/ })
 /******/ ]);

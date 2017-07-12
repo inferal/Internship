@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Link } from 'react-router-dom';
+
 import users from '../src/usersData.js';
 
 class tableView extends Component {
@@ -20,7 +22,7 @@ class tableView extends Component {
                         users.map(function (el, i) {
                             return(
                                 <tr key={i}>
-                                    <td>{el.first_name}</td>
+                                    <th><Link to={{ pathname: `/tableView/${el.id}`}}>{el.first_name}</Link></th>
                                     <td>{el.last_name}</td>
                                     <td>{el.gender}</td>
                                 </tr>
