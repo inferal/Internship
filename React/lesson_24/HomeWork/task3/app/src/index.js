@@ -18,7 +18,7 @@
 
 import React, { Component } from 'react';
 
-import { HashRouter, Route, Link, Switch, Redirect } from 'react-router-dom';
+import { HashRouter, Route, Link, Switch} from 'react-router-dom';
 
 
 import listView from '../views/listView.js';
