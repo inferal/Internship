@@ -22098,13 +22098,14 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * ### Задача 1
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * СИспользуя flux архитектуру:
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *  * Создайте React компонент, содержащий кнопку и элемент div
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *  * При клике по кнопке присвойте элементу div произвольные стили.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Используя flux архитектуру:
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *  *   Создайте страницу-таймер: React компонент, который будет выводить на экран количество секунд,
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      прошедших с момента ее открытия.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *  *   Добавьте на страницу три кнопки: start, stop, reset, выполняющие соответствующие функции
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
-	var styleStore = __webpack_require__(191);
-	var appActions = __webpack_require__(192);
+	var appStore = __webpack_require__(185);
+	var appActions = __webpack_require__(190);
 
 	var App = function (_Component) {
 	    _inherits(App, _Component);
@@ -22115,9 +22116,15 @@
 	        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
 	        _this.state = {
-	            cls: styleStore.cls
+	            interval: '',
+	            stopDoubleClick: false,
+	            counter: 0
 	        };
-	        _this.styleChangeHandler = _this.styleChangeHandler.bind(_this);
+
+	        _this.counterStart = _this.counterStart.bind(_this);
+	        _this.counterTick = _this.counterTick.bind(_this);
+	        _this.counterReset = _this.counterReset.bind(_this);
+	        _this.counterStop = _this.counterStop.bind(_this);
 
 	        return _this;
 	    }
@@ -22127,25 +22134,75 @@
 	        value: function componentWillMount() {
 	            var _this2 = this;
 
-	            styleStore.on('styleChange', function () {
-	                _this2.setState({ cls: styleStore.changeStyle(_this2.state.cls) });
+	            appStore.on('countStart', function () {
+	                appStore.countFun();
+	                _this2.setState({ counter: appStore.getInitialCount() });
+	            });
+
+	            appStore.on('countClear', function () {
+	                appStore.countClearFun();
+	                _this2.setState({ counter: appStore.getInitialCount() });
 	            });
 	        }
 	    }, {
-	        key: 'styleChangeHandler',
-	        value: function styleChangeHandler() {
-	            appActions.changeStyle();
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            this.counteStart();
+	        }
+	    }, {
+	        key: 'counterStart',
+	        value: function counterStart() {
+	            if (!this.state.stopDoubleClick) {
+	                this.setState({ interval: setInterval(this.counterTick, 1000), stopDoubleClick: true });
+	            }
+	        }
+	    }, {
+	        key: 'counterTick',
+	        value: function counterTick() {
+	            appActions.getStart();
+	        }
+	    }, {
+	        key: 'counterReset',
+	        value: function counterReset() {
+	            this.setState({
+	                stopDoubleClick: false
+	            });
+	            appActions.getClear();
+	        }
+	    }, {
+	        key: 'counterStop',
+	        value: function counterStop() {
+	            clearInterval(this.state.interval);
+	            this.setState({
+	                stopDoubleClick: false
+	            });
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
-	                { className: this.state.cls },
+	                { className: 'panel well' },
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    'Counter: ',
+	                    this.state.counter
+	                ),
 	                _react2.default.createElement(
 	                    'button',
-	                    { className: 'btn-md btn-info btn', onClick: this.styleChangeHandler },
-	                    'Change Style!'
+	                    { className: 'btn-md btn-info btn', onClick: this.counterReset },
+	                    'Reset'
+	                ),
+	                _react2.default.createElement(
+	                    'button',
+	                    { className: 'btn-md btn-info btn', onClick: this.counterStart },
+	                    'Start'
+	                ),
+	                _react2.default.createElement(
+	                    'button',
+	                    { className: 'btn-md btn-info btn', onClick: this.counterStop },
+	                    'Stop'
 	                )
 	            );
 	        }
@@ -22157,7 +22214,91 @@
 	module.exports = App;
 
 /***/ }),
-/* 185 */,
+/* 185 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _events = __webpack_require__(186);
+
+	var _dispatcher = __webpack_require__(187);
+
+	var _dispatcher2 = _interopRequireDefault(_dispatcher);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var AppStore = function (_EventEmitter) {
+	    _inherits(AppStore, _EventEmitter);
+
+	    function AppStore() {
+	        _classCallCheck(this, AppStore);
+
+	        var _this = _possibleConstructorReturn(this, (AppStore.__proto__ || Object.getPrototypeOf(AppStore)).call(this));
+
+	        _this.count = 0;
+	        return _this;
+	    }
+
+	    _createClass(AppStore, [{
+	        key: 'getInitialCount',
+	        value: function getInitialCount() {
+	            return this.count;
+	        }
+	    }, {
+	        key: 'counterStart',
+	        value: function counterStart() {
+	            this.count++;
+	            return this.count;
+	        }
+	    }, {
+	        key: 'countFun',
+	        value: function countFun() {
+	            this.count++;
+	            return this.count;
+	        }
+	    }, {
+	        key: 'countClearFun',
+	        value: function countClearFun() {
+	            this.count = 0;
+	        }
+	    }, {
+	        key: 'handleActions',
+	        value: function handleActions(action) {
+
+	            switch (action.type) {
+
+	                case "START":
+	                    {
+	                        this.emit('countStart');
+	                        break;
+	                    }
+	                case "CLEAR":
+	                    {
+	                        this.emit('countClear');
+	                        break;
+	                    }
+	            }
+	        }
+	    }]);
+
+	    return AppStore;
+	}(_events.EventEmitter);
+
+	var appStore = new AppStore();
+
+	_dispatcher2.default.register(appStore.handleActions.bind(appStore));
+
+	module.exports = appStore;
+
+/***/ }),
 /* 186 */
 /***/ (function(module, exports) {
 
@@ -22708,78 +22849,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 190 */,
-/* 191 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _events = __webpack_require__(186);
-
-	var _dispatcher = __webpack_require__(187);
-
-	var _dispatcher2 = _interopRequireDefault(_dispatcher);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var StyleStore = function (_EventEmitter) {
-	    _inherits(StyleStore, _EventEmitter);
-
-	    function StyleStore() {
-	        _classCallCheck(this, StyleStore);
-
-	        var _this = _possibleConstructorReturn(this, (StyleStore.__proto__ || Object.getPrototypeOf(StyleStore)).call(this));
-
-	        _this.cls = 'one';
-	        return _this;
-	    }
-
-	    _createClass(StyleStore, [{
-	        key: 'changeStyle',
-	        value: function changeStyle(cls) {
-	            if (cls == 'one') {
-	                this.cls = 'two';
-	                return this.cls;
-	            } else {
-	                this.cls = 'one';
-	                return this.cls;
-	            }
-	        }
-	        // обрабочик actions
-
-	    }, {
-	        key: 'handleActions',
-	        value: function handleActions(action) {
-	            switch (action.type) {
-	                case "CHANGE_STYLE":
-	                    {
-	                        this.emit('styleChange');
-	                        console.log('style changed!');
-	                        break;
-	                    }
-	            }
-	        }
-	    }]);
-
-	    return StyleStore;
-	}(_events.EventEmitter);
-
-	var styleStore = new StyleStore();
-	// регистрация обработчика actions
-	_dispatcher2.default.register(styleStore.handleActions.bind(styleStore));
-
-	module.exports = styleStore;
-
-/***/ }),
-/* 192 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22787,7 +22857,8 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.changeStyle = changeStyle;
+	exports.getStart = getStart;
+	exports.getClear = getClear;
 
 	var _dispatcher = __webpack_require__(187);
 
@@ -22795,9 +22866,15 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function changeStyle() {
+	function getStart() {
 	    _dispatcher2.default.dispatch({
-	        type: 'CHANGE_STYLE'
+	        type: 'START'
+	    });
+	}
+
+	function getClear() {
+	    _dispatcher2.default.dispatch({
+	        type: 'CLEAR'
 	    });
 	}
 

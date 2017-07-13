@@ -1,7 +1,13 @@
 import dispatcher from '../dispatcher'
 
-export function changeStyle() {
+export function getStart() {
     dispatcher.dispatch({
-        type: 'CHANGE_STYLE'
+        type: 'START'
+    })
+}
+
+export function getClear() {
+    dispatcher.dispatch({
+        type: 'CLEAR'
     })
 }
