@@ -22083,32 +22083,28 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Class Work
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * ### Задача 2
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Используя flux архитектуру:
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *  *   Создайте страницу-таймер: React компонент, который будет выводить на экран количество секунд,
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      прошедших с момента ее открытия.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *  *   Добавьте на страницу три кнопки: start, stop, reset, выполняющие соответствующие функции
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	/*
+	 * Class Work
+	 *
+	 * ### Задача 3
+	 *
+	 * Используя flux архитектуру создайте страницу-калькулятор: 2 поля ввода и 4 кнопки (*, /, +. -),
+	 * выполняющие соответствующие математические операции над числами, записанные в поля ввода.
+	 */
+
+	var React = __webpack_require__(1);
 
 	var appStore = __webpack_require__(185);
 	var appActions = __webpack_require__(190);
 
-	var App = function (_Component) {
-	    _inherits(App, _Component);
+	var App = function (_React$Component) {
+	    _inherits(App, _React$Component);
 
 	    function App() {
 	        _classCallCheck(this, App);
@@ -22118,8 +22114,8 @@
 	        _this.state = {
 	            num1: '',
 	            num2: '',
-	            result: 'Еще нет',
-	            err: 'Ошибка: введите только цифры в полях'
+	            result: 'Not Yet',
+	            err: 'Error: Enter just Numbers in the fields!'
 	        };
 
 	        _this.firstValueTake = _this.firstValueTake.bind(_this);
@@ -22139,22 +22135,19 @@
 
 	            appStore.on('plus', function () {
 	                appStore.plusFunc(Number(_this2.state.num1), Number(_this2.state.num2));
-	                _this2.setState({ result: isNaN(appStore.getResult()) ? _this2.state.err : appStore.getResult });
+	                _this2.setState({ result: isNaN(appStore.getResult()) ? _this2.state.err : appStore.getResult() });
 	            });
-
 	            appStore.on('minus', function () {
 	                appStore.minusFunc(Number(_this2.state.num1), Number(_this2.state.num2));
-	                _this2.setState({ result: isNaN(appStore.getResult()) ? _this2.state.err : appStore.getResult });
+	                _this2.setState({ result: isNaN(appStore.getResult()) ? _this2.state.err : appStore.getResult() });
 	            });
-
 	            appStore.on('multi', function () {
 	                appStore.multiFunc(Number(_this2.state.num1), Number(_this2.state.num2));
-	                _this2.setState({ result: isNaN(appStore.getResult()) ? _this2.state.err : appStore.getResult });
+	                _this2.setState({ result: isNaN(appStore.getResult()) ? _this2.state.err : appStore.getResult() });
 	            });
-
 	            appStore.on('divide', function () {
 	                appStore.divideFunc(Number(_this2.state.num1), Number(_this2.state.num2) ? Number(_this2.state.num2) : "Error");
-	                _this2.setState({ result: isNaN(appStore.getResult()) ? _this2.state.err : appStore.getResult });
+	                _this2.setState({ result: isNaN(appStore.getResult()) ? _this2.state.err : appStore.getResult() });
 	            });
 	        }
 	    }, {
@@ -22219,26 +22212,26 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            return _react2.default.createElement(
+	            return React.createElement(
 	                'div',
-	                { className: 'panel well' },
-	                _react2.default.createElement('input', { type: 'text', onChange: this.firstValueTake }),
-	                _react2.default.createElement('input', { type: 'text', onChange: this.secondValueTake }),
-	                _react2.default.createElement(
+	                null,
+	                React.createElement('input', { type: 'text', onChange: this.firstValueTake }),
+	                React.createElement('input', { type: 'text', onChange: this.secondValueTake }),
+	                React.createElement(
 	                    'p',
 	                    null,
 	                    this.state.result
 	                ),
-	                _react2.default.createElement('input', { type: 'button', value: '  +  ', onClick: this.plusChecker }),
-	                _react2.default.createElement('input', { type: 'button', value: '  -  ', onClick: this.minusChecker }),
-	                _react2.default.createElement('input', { type: 'button', value: '  *  ', onClick: this.multiChecker }),
-	                _react2.default.createElement('input', { type: 'button', value: '  /  ', onClick: this.divideChecker })
+	                React.createElement('input', { type: 'button', value: '  +  ', onClick: this.plusChecker }),
+	                React.createElement('input', { type: 'button', value: '  -  ', onClick: this.minusChecker }),
+	                React.createElement('input', { type: 'button', value: '  *  ', onClick: this.multiChecker }),
+	                React.createElement('input', { type: 'button', value: '  /  ', onClick: this.divideChecker })
 	            );
 	        }
 	    }]);
 
 	    return App;
-	}(_react.Component);
+	}(React.Component);
 
 	module.exports = App;
 

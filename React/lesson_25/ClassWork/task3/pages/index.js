@@ -1,23 +1,21 @@
 /*
  * Class Work
  *
- * ### Задача 2
+ * ### Задача 3
  *
- * Используя flux архитектуру:
- *  *   Создайте страницу-таймер: React компонент, который будет выводить на экран количество секунд,
- *      прошедших с момента ее открытия.
- *  *   Добавьте на страницу три кнопки: start, stop, reset, выполняющие соответствующие функции
+ * Используя flux архитектуру создайте страницу-калькулятор: 2 поля ввода и 4 кнопки (*, /, +. -),
+ * выполняющие соответствующие математические операции над числами, записанные в поля ввода.
  */
 
 
 
 
-import React, { Component } from 'react';
+var React = require('react');
 
-var appStore = require('../stores/appStore');
-var appActions = require('../actions/appActions');
+var appStore = require('../Stores/appStore');
+var appActions = require('../Actions/appActions');
 
-class App extends Component{
+class App extends React.Component{
 
     constructor() {
         super();
@@ -25,8 +23,8 @@ class App extends Component{
         this.state = {
             num1: '',
             num2: '',
-            result: 'Еще нет',
-            err: 'Ошибка: введите только цифры в полях'
+            result: 'Not Yet',
+            err: 'Error: Enter just Numbers in the fields!'
         };
 
         this.firstValueTake = this.firstValueTake.bind(this);
@@ -40,24 +38,27 @@ class App extends Component{
 
     componentWillMount() {
         appStore.on('plus', () => {
-            appStore.plusFunc(Number(this.state.num1), Number(this.state.num2));
-            this.setState({result: isNaN(appStore.getResult()) ? this.state.err : appStore.getResult})
-        });
+                appStore.plusFunc(Number(this.state.num1), Number(this.state.num2));
+                this.setState({ result: isNaN(appStore.getResult()) ? this.state.err : appStore.getResult() })
 
+            }
+        );
         appStore.on('minus', () => {
-            appStore.minusFunc(Number(this.state.num1), Number(this.state.num2));
-            this.setState({result: isNaN(appStore.getResult()) ? this.state.err : appStore.getResult})
-        });
-
+                appStore.minusFunc(Number(this.state.num1), Number(this.state.num2));
+                this.setState({ result: isNaN(appStore.getResult()) ? this.state.err : appStore.getResult() })
+            }
+        );
         appStore.on('multi', () => {
-            appStore.multiFunc(Number(this.state.num1), Number(this.state.num2));
-            this.setState({result: isNaN(appStore.getResult()) ? this.state.err : appStore.getResult})
-        });
-
+                appStore.multiFunc(Number(this.state.num1), Number(this.state.num2));
+                this.setState({ result: isNaN(appStore.getResult()) ? this.state.err : appStore.getResult() })
+            }
+        );
         appStore.on('divide', () => {
-            appStore.divideFunc(Number(this.state.num1), Number(this.state.num2) ? Number(this.state.num2) : "Error");
-            this.setState({result: isNaN(appStore.getResult()) ? this.state.err : appStore.getResult})
-        })
+                appStore.divideFunc(Number(this.state.num1), Number(this.state.num2) ? Number(this.state.num2) : "Error");
+                this.setState({ result: isNaN(appStore.getResult()) ? this.state.err : appStore.getResult() })
+            }
+        );
+
     }
 
     firstValueTake(event){
@@ -111,9 +112,9 @@ class App extends Component{
         appActions.plusWorker()
     }
 
-    render(){
-        return(
-            <div className="panel well">
+    render() {
+        return (
+            <div>
                 <input type="text" onChange={this.firstValueTake}/>
                 <input type="text" onChange={this.secondValueTake}/>
                 <p>{this.state.result}</p>
@@ -122,8 +123,7 @@ class App extends Component{
                 <input type="button" value='  *  ' onClick={this.multiChecker}/>
                 <input type="button" value='  /  ' onClick={this.divideChecker}/>
             </div>
-        )
-    }
+        )}
 }
 
 module.exports = App;
