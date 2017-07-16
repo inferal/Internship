@@ -2,41 +2,41 @@ var React = require('react');
 var bindActionCreators =  require('redux').bindActionCreators;
 var connect = require('react-redux').connect;
 var actions = require('../actions/index');
-var List = require('./listCom');
+var ListView  = require('./listCom');
 
 class App extends React.Component {
     constructor(){
         super();
-        this.showList = this.showList.bind(this);
-        this.state = { users: ['user1', 'user2', 'user3', 'user4'] }
+        this.handler = this.handler.bind(this);
+        this.state = {click: true}
     }
-    showList(){
-        this.props.changeBool(!this.props.showOrNot)
+    handler(){
 
+        this.setState({
+            click: !this.state.click
+        })
+        console.log(this.state.click)
     }
+
 
     render() {
         return (
             <div>
-                <button onClick={this.showList}>SHOW ME</button>
-                {this.props.showOrNot ? '  Click the button ' : <List items={this.state.users}/>}
+                <button onClick={this.handler}>Click me</button>
+                {!this.state.click ? <ListView items={this.props.stateNew.users}/> : ""}
             </div>
         )}
 }
 
-//функция для привязки состояния приложения к props (свойствам компонента)
 function mapStateToProps(state) {
     return {
-        showOrNot: state
+        stateNew: state
     }
 }
 
-//функция для привязки actions к props (свойствам компонента)
 function matchDispatchToProps(dispatch) {
     return bindActionCreators({
-        changeBool: actions.changeBool
     } , dispatch )
 }
 
-// привязка actions и state к React компоненту
 module.exports = connect(mapStateToProps, matchDispatchToProps)(App);

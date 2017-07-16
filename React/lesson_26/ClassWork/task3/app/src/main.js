@@ -11,14 +11,32 @@
 
 var React = require('react');
 var ReactDOM = require('react-dom');
-
-var Provider = require('react-redux').Provider;
-var createStore = require('redux').createStore;
-
-var countReducer = require('../reducers/listReducer');
 var App = require('../components/app');
 
-let store = createStore(countReducer);
+
+var Provider = require('react-redux').Provider;
+var redux = require('redux');
+var createStore = redux.createStore;
+var combineReducers = redux.combineReducers; // Необходим в случае нескольких редюсеров
+var applyMiddleware = redux.applyMiddleware;
+var compose = redux.compose;
+
+
+
+var thunk = require('redux-thunk').default;
+var reducer = require('../reducers/listReducer');
+var fetchUsers = require('../actions/index').fetchUsers;
+
+
+
+
+const middleware = applyMiddleware(thunk);
+
+const store = createStore(reducer, compose(middleware));
+
+
+store.dispatch(fetchUsers()) //загрузка файла
+
 
 ReactDOM.render(
     <Provider store={store}>
